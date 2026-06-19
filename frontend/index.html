@@ -4,12 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clinic Management || Home</title>
-    <link rel="stylesheet" href="./Styles/main.css">
+    <link rel="stylesheet" href="./Styles/main.css" />
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"
+    ></script>
   </head>
   <body>
-    <p>
-      سلام
-
-    </p>
+    <!-- # Navbar Start # -->
+    <nav class="navbar">
+      <section class="nav-center" x-data="{open: false}">
+        <div class="nav-header">
+          <div class="nav-logo">
+            <h4>دکتر محمدی</h4>
+          </div>
+          <button class="nav-btn" @click="open = !open">
+            <span
+              class="nav-btn-span"
+              :class="{ 'line-1-active': open }"
+            ></span>
+            <span
+              class="nav-btn-span"
+              :class="{ 'line-2-active': open }"
+            ></span>
+            <span
+              class="nav-btn-span"
+              :class="{ 'line-3-active': open }"
+            ></span>
+          </button>
+        </div>
+        <ul x-cloak x-show="open" x-transition.duration.700ms class="nav-links">
+          <li class="nav-link">
+            <a href="#home">خانه</a>
+          </li>
+          <li class="nav-link">
+            <a href="#services">خدمات</a>
+          </li>
+          <li class="nav-link">
+            <a href="#about">درباره دکتر</a>
+          </li>
+          <li class="nav-link">
+            <a href="#portfolio">نمونه کارها</a>
+          </li>
+          <li class="nav-link">
+            <a href="#reviews">نظرات بیماران</a>
+          </li>
+          <li class="nav-link">
+            <a href="#conact">تماس با ما</a>
+          </li>
+        </ul>
+        <div x-cloak x-transition.duration.680ms x-show="open" class="nav-book">
+          <button><a href="#" class="nav-btn-book">رزرو نوبت</a></button>
+        </div>
+      </section>
+    </nav>
   </body>
 </html>
