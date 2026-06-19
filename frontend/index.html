@@ -13,10 +13,14 @@
   <body>
     <!-- # Navbar Start # -->
     <nav class="navbar">
-      <section class="nav-center" x-data="{open: false}">
+      <section
+        class="nav-center"
+        x-data="{open: false, isDesktop: window.innerWidth >= 728}"
+        @resize.window="isDesktop = window.innerWidth >= 728"
+      >
         <div class="nav-header">
           <div class="nav-logo">
-            <h4>دکتر محمدی</h4>
+            <h3>دکتر محمدی</h3>
           </div>
           <button class="nav-btn" @click="open = !open">
             <span
@@ -33,27 +37,38 @@
             ></span>
           </button>
         </div>
-        <ul x-cloak x-show="open" x-transition.duration.700ms class="nav-links">
-          <li class="nav-link">
+        <ul
+          x-cloak
+          x-show="isDesktop || open"
+          x-transition.duration.700ms
+          class="nav-links"
+        >
+          <li class="nav-link" @click="open = false">
             <a href="#home">خانه</a>
           </li>
-          <li class="nav-link">
+          <li class="nav-link" @click="open = false">
             <a href="#services">خدمات</a>
           </li>
-          <li class="nav-link">
+          <li class="nav-link" @click="open = false">
             <a href="#about">درباره دکتر</a>
           </li>
-          <li class="nav-link">
+          <li class="nav-link" @click="open = false">
             <a href="#portfolio">نمونه کارها</a>
           </li>
-          <li class="nav-link">
+          <li class="nav-link" @click="open = false">
             <a href="#reviews">نظرات بیماران</a>
           </li>
-          <li class="nav-link">
+          <li class="nav-link" @click="open = false">
             <a href="#conact">تماس با ما</a>
           </li>
         </ul>
-        <div x-cloak x-transition.duration.680ms x-show="open" class="nav-book">
+        <div
+          x-cloak
+          x-transition.duration.680ms
+          x-show="isDesktop || open"
+          @click="open = false"
+          class="nav-book"
+        >
           <button><a href="#" class="nav-btn-book">رزرو نوبت</a></button>
         </div>
       </section>
