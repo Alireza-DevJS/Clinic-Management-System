@@ -16,7 +16,7 @@ class AuthController extends ApiController
             'password' => 'required',
         ]);
         $user = User::where('email', $request->email)->first();
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        if (!$user && !Hash::check($request->password, $user->password)) {
             return $this->errorResponse('ایمیل یا رمز عبور اشتباه است', 401);
         }
         $token = $user->createToken('admin_token')->plainTextToken;
