@@ -148,15 +148,25 @@ p {
   padding-inline: clamp(1rem, 4vw, 2.5rem);
 }
 
+.content-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #cbd5e1,
+    #f3f4f6,
+    #cbd5e1,
+    transparent
+  );
+  margin: 32px 0;
+}
+
 /* 
 ================
 Navbar 
 ================
 */
-html {
-  position: relative;
-}
-
 .navbar {
   position: fixed;
   margin-top: 1.25rem;
@@ -265,10 +275,16 @@ html {
 .nav-account-option-container {
   display: flex;
   justify-content: end;
+  backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .nav-account-options-container {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 1);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 8px 32px rgba(31, 38, 135, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
   margin-top: 1.5rem;
   width: 300px;
   height: auto;
@@ -504,40 +520,167 @@ Hero Styles
 ================
 */
 
-.hero-bg {
+header {
   position: relative;
-  height: 100vh;
   overflow: hidden;
 }
 
-.hero-image {
+.hero-lines-container {
   position: absolute;
-  inset: 0;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-  object-position: center;
-
+  pointer-events: none;
   z-index: -1;
+  left: 0;
 }
 
 .hero-section {
-  position: relative;
+  padding-top: 8rem;
 }
 
-.hero-article {
+/* .hero-image-bg {
+  display: none;
   position: absolute;
-  background: var(--color-primary);
-  width: 40%;
-  max-height: 500px;
-  height: auto;
-  top: 10rem;
-  left: 20%;
+  inset: 0;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.16)),
+    url("/frontend/img/Hero-IMG.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.hero-article {
+  text-align: center;
+}
+
+.hero-image {
+  width: 70%;
+  min-width: 350px;
+  margin: 0 auto;
+  z-index: 99;
 }
 
 .hero-title-text-btn {
-  width: 150px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  color: var(--color-primary);
+  border: 1px solid var(--color-light-primary);
+  justify-content: center;
+  width: 325px;
+  border-radius: 25px;
+  margin: 3rem auto;
+}
 
+.hero-text-container {
+  cursor: default;
+}
+
+.hero-title-text {
+  color: var(--color-grey-1);
+  margin-top: 2rem;
+}
+
+.hero-reserve-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--color-light-primary);
+  padding: 7px 15px;
+  border-radius: 13px;
+  box-shadow: var(--dark-shadow);
+  margin: 2rem 0 4rem;
+  transition: var(--transition);
+}
+.hero-reserve-btn:hover {
+  scale: 1.045;
+}
+
+.hero-status-lists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-status-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  width: 113px;
+  transition: var(--transition);
+  border-radius: 10px;
+  color: var(--color-primary);
+}
+.hero-status-list:hover {
+  background: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  box-shadow: var(--light-shadow);
+  color: var(--color-grey-2);
+}
+
+@media screen and (min-width: 840px) {
+  /* .hero-article {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+  } */
+
+  .hero-image {
+    display: none;
+  }
+
+  .hero-img-system-view {
+    width: 100%;
+    height: 212px;
+    border-radius: 30px;
+    background-image: url("/frontend/img/Hero-IMG2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-top: 3.75rem;
+    border: 1px solid rgba(14, 165, 233, 0.23);
+  }
+
+  .radial-gradiant-header {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .radial-blue {
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    background: radial-gradient(
+      circle,
+      rgba(186, 230, 253, 0.28) 0%,
+      rgba(14, 165, 233, 0.14) 40%,
+      rgba(14, 165, 233, 0.06) 70%,
+      transparent 100%
+    );
+    filter: blur(110px);
+  }
+  .radial-green {
+    background: radial-gradient(
+      circle,
+      rgba(167, 243, 208, 0.28) 0%,
+      /* --color-light-secondary */ rgba(16, 185, 129, 0.14) 40%,
+      /* --color-secondary */ rgba(16, 185, 129, 0.06) 70%,
+      transparent 100%
+    );
+
+    top: 70px;
+    right: 90px;
+    filter: blur(90px);
+  }
 }
