@@ -18,6 +18,18 @@ class Appointment extends Model
     {
         return [
             'status' => AppointmentStatus::class,
+             'appointment_date' => 'datetime',
         ];
     }
+    public function canBeCancelled(): bool
+{
+    return $this->status === AppointmentStatus::Pending;
+}
+
+public function cancel(): void
+{
+    $this->update([
+        'status' => AppointmentStatus::Cancelled,
+    ]);
+}
 }

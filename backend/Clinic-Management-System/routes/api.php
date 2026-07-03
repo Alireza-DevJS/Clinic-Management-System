@@ -18,6 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
      Route::prefix('client')->group(function () {
         Route::apiResource('appointments', ClientAppointmentController::class);
         Route::get('/available-slots', [AvailableSlotController::class, 'index']);
+        Route::patch('/appointments/{appointment}/cancel',[ClientAppointmentController::class, 'cancel']);
     });
 
 });

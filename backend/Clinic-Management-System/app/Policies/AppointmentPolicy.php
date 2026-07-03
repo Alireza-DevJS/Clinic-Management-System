@@ -50,4 +50,9 @@ class AppointmentPolicy
     {
         return false;
     }
+    public function cancel(User $user, Appointment $appointment): bool
+{
+    return $appointment->user_id === $user->id
+        && $appointment->canBeCancelled();
+}
 }

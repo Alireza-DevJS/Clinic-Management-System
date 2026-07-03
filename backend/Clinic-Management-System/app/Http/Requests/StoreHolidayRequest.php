@@ -16,12 +16,12 @@ class StoreHolidayRequest extends FormRequest
     }
 
     public function rules(): array
-    {
-        return [
-            'date' => ['required|date|unique:holidays,date'],
-            'title' => ['nullable|string']
-        ];
-    }
+{
+    return [
+        'date' => 'required|date|unique:holidays,date',
+        'title' => 'nullable|string',
+    ];
+}
 
     public function messages(): array
     {
