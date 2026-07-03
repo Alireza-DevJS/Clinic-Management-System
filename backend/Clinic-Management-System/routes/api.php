@@ -1,15 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
-use App\Http\Controllers\Api\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Api\Admin\AppointmentController as AdminAppointmentController;
+use App\Http\Controllers\Api\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\HolidayController;
 use App\Http\Controllers\Api\Admin\WorkShiftController;
-
-use App\Http\Controllers\Api\Client\AuthController as ClientAuthController;
 use App\Http\Controllers\Api\Client\AppointmentController as ClientAppointmentController;
+use App\Http\Controllers\Api\Client\AuthController as ClientAuthController;
 use App\Http\Controllers\Api\Client\AvailableSlotController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,11 +19,17 @@ use App\Http\Controllers\Api\Client\AvailableSlotController;
 Route::post('/register', [ClientAuthController::class, 'register']);
 Route::post('/login', [ClientAuthController::class, 'login']);
 
-Route::middleware('auth:sanctum')->group(function () {
+/*
+|--------------------------------------------------------------------------
+| Client Routes
+|--------------------------------------------------------------------------
+*/
 
-    Route::post('/logout', [ClientAuthController::class, 'logout']);
+Route::middleware(['auth:sanctum', 'client'])
+    ->prefix('client')
+    ->group(function () {
 
-    Route::prefix('client')->group(function () {
+        Route::post('/logout', [ClientAuthController::class, 'logout']);
 
         Route::apiResource('appointments', ClientAppointmentController::class);
 
@@ -37,10 +42,7 @@ Route::middleware('auth:sanctum')->group(function () {
             '/available-slots',
             [AvailableSlotController::class, 'index']
         );
-
     });
-
-});
 
 /*
 |--------------------------------------------------------------------------
@@ -50,12 +52,24 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::post('/admin/login', [AdminAuthController::class, 'login']);
 
-Route::prefix('admin')
-    ->middleware('auth:sanctum')
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
+Route::middleware(['auth:sanctum', 'admin'])
+    ->prefix('admin')
     ->group(function () {
 
         Route::post('/logout', [AdminAuthController::class, 'logout']);
+        /*
+        |--------------------------------------------------------------------------
+        | Dashboard
+        |--------------------------------------------------------------------------
+        */
 
+        Route::get('/dashboard', [DashboardController::class, 'index']);
         /*
         |--------------------------------------------------------------------------
         | Work Shifts

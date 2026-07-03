@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\UserRole;
 use App\Enums\Gender;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -47,13 +48,14 @@ class User extends Authenticatable
      * @return array<string, string>
      */
     protected function casts(): array
-    {
-        return [
-            'password' => 'hashed',
+{
+    return [
+        'password' => 'hashed',
         'birth_date' => 'date',
         'gender' => Gender::class,
-        ];
-    }
+        'role' => UserRole::class,
+    ];
+}
     public function isAdmin(): bool
     {
         return $this->role === 'admin';

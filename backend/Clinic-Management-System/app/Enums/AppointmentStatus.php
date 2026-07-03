@@ -7,6 +7,7 @@ enum AppointmentStatus: string
     case Pending = 'pending';
     case Confirmed = 'confirmed';
     case Cancelled = 'cancelled';
+    case Completed = 'Completed';
 
     public function label(): string
     {
@@ -14,6 +15,7 @@ enum AppointmentStatus: string
             self::Pending => 'در انتظار',
             self::Confirmed => 'تأیید شده',
             self::Cancelled => 'لغو شده',
+            self::Completed => 'تکمیل شده',
         };
     }
 }

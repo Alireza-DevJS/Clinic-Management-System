@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Api\Client;
 
-use App\Enums\AppointmentStatus;
 use App\Http\Controllers\ApiController;
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Resources\AppointmentResource;
 use App\Models\Appointment;
 use App\Services\AppointmentService;
-use App\Services\SlotService;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
