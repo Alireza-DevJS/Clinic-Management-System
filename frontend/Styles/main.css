@@ -159,7 +159,7 @@ p {
     #cbd5e1,
     transparent
   );
-  margin: 32px 0;
+  margin: 84px 0;
 }
 
 /* 
@@ -682,5 +682,458 @@ header {
     top: 70px;
     right: 90px;
     filter: blur(90px);
+  }
+}
+
+/* 
+================
+Services Styles 
+================
+*/
+
+.services-cards-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
+.services-section {
+  margin-top: 5rem;
+}
+
+.sections-header {
+  text-align: center;
+}
+
+.sections-header-text {
+  color: var(--color-grey-1);
+  margin-bottom: 7px;
+}
+
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.services-card {
+  cursor: default;
+  margin: 0 auto;
+  width: 185px;
+  height: 220px;
+  text-align: center;
+  background: var(--color-white);
+  border: solid 1px #d6e4f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 10px;
+  margin-bottom: 1rem;
+  box-shadow: var(--light-shadow);
+  transition: var(--transition);
+}
+.services-card:hover {
+  scale: 1.05;
+  box-shadow: var(--dark-shadow);
+}
+
+.services-card-header {
+  color: var(--color-primary);
+  margin: 6px 0;
+  font-size: 18px;
+}
+
+.services-card-text {
+  font-size: 14px;
+}
+
+.services-show-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem auto;
+  width: 190px;
+  height: 50px;
+  background: var(--color-grey-3);
+  border: solid 1px #d6e4f5;
+  border-radius: 15px;
+  color: var(--color-primary);
+  box-shadow: var(--dark-shadow);
+}
+
+.services-contact-container {
+  width: 100%;
+  padding: 2rem 0;
+  border-radius: 25px;
+  background: var(--color-light-primary);
+  margin: 3rem 0;
+}
+
+.services-contact-img-contaier {
+  text-align: center;
+  cursor: default;
+}
+
+.services-contact-img {
+  width: 100%;
+}
+
+.services-contact-img-header {
+  color: var(--color-grey-1);
+  margin-bottom: 1rem;
+}
+
+.services-contact-img-text {
+  color: var(--color-grey-1);
+  margin-bottom: 1rem;
+}
+
+.services-contact-img-icon {
+  width: 212px;
+  margin: 0 auto;
+}
+
+.services-contact-img-icons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 25px 0;
+}
+
+.services-contact-form-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  background: var(--color-white);
+  width: 95%;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 1rem;
+  margin-top: 4rem;
+}
+
+.services-contact-input-group,
+.services-contact-custom-select {
+  position: relative;
+  width: 350px;
+  margin-top: 0;
+}
+
+.services-contact-input-group input,
+.services-contact-custom-select-btn,
+.services-contact-input-group textarea {
+  width: 100%;
+  height: 60px;
+  padding: 0 50px 0 15px;
+  border: 1px solid var(--color-light-primary);
+  border-radius: 12px;
+  outline: none;
+  font-family: var(--ff-primary);
+  font-size: 16px;
+  transition: 0.05s all linear;
+  color: var(--color-primary);
+}
+.services-contact-input-group textarea {
+  padding: 0 15px 0 20px;
+  height: 60px;
+  resize: none;
+}
+.services-contact-input-group input:focus {
+  border: 2px solid var(--color-primary);
+}
+
+.services-contact-input-group span {
+  position: absolute;
+  right: 18px;
+  top: 52%;
+  transform: translateY(-50%);
+  color: #8b8b8b;
+  pointer-events: none;
+  color: var(--color-primary);
+}
+
+.services-contact-custom-select-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 18px 0 45px;
+  cursor: pointer;
+}
+
+.services-contact-custom-select-btn:hover {
+  border-color: var(--color-primary);
+}
+
+.services-contact-custom-select.active .services-contact-custom-select-btn {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.12);
+}
+
+.arrow {
+  transition: 0.25s;
+}
+
+.services-contact-custom-select.active .arrow {
+  transform: rotate(180deg);
+}
+
+.services-contact-custom-select-options {
+  z-index: 1000;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  left: 0;
+
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+
+  background: #fff;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  max-height: 250px;
+  overflow-y: auto;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+
+  transition: 0.25s;
+}
+
+.services-contact-custom-select.active .services-contact-custom-select-options {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.services-contact-custom-select-options li {
+  padding: 12px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.services-contact-custom-select-options
+  li:not(.services-contact-custom-select-option-disable):hover {
+  background: #eef5ff;
+  color: var(--color-primary);
+}
+
+.datePicker {
+  cursor: pointer;
+}
+
+.services-contact-custom-select-option-disable {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.services-contact-custom-select-option-disable:hover {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: default;
+  opacity: 0.7;
+}
+
+.services-reserve-btn {
+  display: block;
+  width: 100%;
+  height: 50px;
+  margin: 25px auto 0;
+  border: none;
+  border-radius: 14px;
+  background: var(--color-primary);
+  color: var(--color-grey-1);
+  font-family: var(--ff-primary);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+}
+.services-reserve-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(59, 130, 246, 0.3);
+}
+.services-reserve-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(59, 130, 246, 0.2);
+}
+.services-reserve-btn:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 4px rgba(59, 130, 246, 0.15),
+    0 10px 20px rgba(59, 130, 246, 0.2);
+}
+
+@media screen and (min-width: 670px) {
+  .services-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .services-contact-img-contaier {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+
+  .services-contact-img-div {
+    order: 2;
+  }
+  .services-contact-img-header-div {
+    order: 1;
+  }
+
+  .services-contact-input-group {
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .services-cards {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .services-contact-container {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .services-contact-form-container {
+    margin-right: 1rem;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .services-cards {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+/* 
+================
+About Us Styles 
+================
+*/
+
+.about-us-header-text {
+  font-size: 1.65rem;
+  font-weight: bold;
+  color: var(--color-grey-1);
+  margin: 5px 0;
+}
+
+.about-us-card {
+  border: solid 1px #d6e4f5;
+  padding: 1rem;
+  border-radius: 15px;
+  margin-top: 5rem;
+  box-shadow: var(--light-shadow);
+}
+
+.about-us-card-text-container {
+  text-align: center;
+}
+
+.about-us-card-img {
+  width: 80%;
+  max-width: 635px;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+.about-us-doctor-name {
+  font-size: 40px;
+  font-weight: bold;
+  color: var(--color-grey-1);
+}
+
+.about-us-doctor-services-text {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.about-us-doctor-services-container {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.about-us-doctor-services-list {
+  border: solid 1px #d6e4f5;
+  width: 350px;
+  height: 50px;
+  margin: 10px auto 0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-us-personel-services-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 3rem;
+}
+
+.about-us-personel-services-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  padding: 1rem;
+  border-radius: 15px;
+}
+.about-us-personel-services-list:hover {
+  border: solid 1px #d6e4f5;
+  box-shadow: var(--light-shadow);
+}
+
+.about-us-personel-services-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 800px) {
+  .about-us-doctor-services-container {
+    display: grid;
+    grid-template-columns: repeat(2, 350px);
+    gap: 5px;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 1250px) {
+  .about-us-card {
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+  }
+
+  .about-us-card-img {
+    height: 480px;
+    width: 550px;
+  }
+
+  .about-us-doctor-services-list {
+    width: 300px;
+  }
+
+  .about-us-doctor-services-container {
+    grid-template-columns: repeat(2, 300px);
+  }
+
+  .about-us-card-reverse {
+    flex-direction: row;
   }
 }
