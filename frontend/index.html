@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clinic Management || Home</title>
     <link rel="stylesheet" href="./Styles/main.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css"
+    />
+    <link rel="stylesheet" href="./Styles/persian-datepicker.min.css" />
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"
@@ -68,7 +74,7 @@
             <ul class="nav-links" x-data="{ active: '' }">
               <li @click="active= 2">
                 <a
-                  href="#"
+                  href="#services"
                   class="aside-item-link"
                   :class="active === 2 ? 'aside-item-link-text-active' : ''"
                 >
@@ -522,7 +528,7 @@
               </svg>
             </span>
             <a
-              href="#"
+              href="#services"
               class="aside-item-link"
               :class="active === 2 ? 'aside-item-link-text-active' : ''"
             >
@@ -1212,74 +1218,440 @@
       </section>
     </header>
     <!-- ### Devider ### -->
-     <div class="content-divider"></div>
+    <div class="content-divider"></div>
     <!-- # Services Start # -->
-     <main>
-      <section class="services-section section-center">
-        casdasdasdasdasd
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+    <main>
+      <section class="services-section section-center" id="services">
+        <div class="services-header">
+          <h3 class="services-header-text">خدمات ما</h3>
+          <p>مجموعه کامل خدمات دندان پزشکی برای شما و خانواده‌تان</p>
+        </div>
+        <div class="services-cards">
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">ایمپلنت دندان</span>
+            <span class="services-card-text"
+              >جایگزینی دندان‌های از دست رفته با ایمپلنت های استاندارد</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">عصب‌کشی</span>
+            <span class="services-card-text"
+              >درمان ریشه دندان و حفظ دندان طبیعی</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">ترمیم دندان</span>
+            <span class="services-card-text"
+              >درمان پوسیدگی و ترمیم دندان با مواد با کیفیت</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">جرم‌گیری و بروساژ </span>
+            <span class="services-card-text"
+              >پاکسازی دندان‌ها و پیشگیری از بیماری های لثه</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">معاینه و مشاوره </span>
+            <span class="services-card-text"
+              >بررسی وضعیت کامل دهان و دندان و ارائه بهترین راهکار درمانی</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">دندان پزشکی کودکان</span>
+            <span class="services-card-text"
+              >مراقبت تخصصی از دندان‌های کودکان در محیطی دوستانه</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">کشیدن دندان</span>
+            <span class="services-card-text"
+              >کشیدن دندان های آسیب‌دیده و جراحی دندان عقل</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">بلیچینگ دندان</span>
+            <span class="services-card-text"
+              >سفید کردن دندان‌ها و افزایش درخشندگی لبخند</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">لمینت و کامپوزیت</span>
+            <span class="services-card-text"
+              >زیبایی لبخند با لمینت سرامیکی و کامپوزیت ونیر</span
+            >
+          </article>
+          <article class="services-card">
+            <img class="services-cards-icon" src="#" alt="#" />
+            <span class="services-card-header">ارتودنسی</span>
+            <span class="services-card-text"
+              >اصلاح نامرتبی دندان‌ها و فک با روش های نوین</span
+            >
+          </article>
+        </div>
+        <a class="services-show-btn" href="#">مشاهده همه خدمات</a>
+        <article class="services-contact-container">
+          <div class="services-contact-img-contaier">
+            <div class="services-contact-img-div">
+              <img
+                class="services-contact-img"
+                src="./img/Services-Contact-IMG.png"
+                alt="رزرو نوبت دندان پزشکی | دندان پزشکی | کلینیک مهر"
+              />
+            </div>
+            <div class="services-contact-img-header-div">
+              <h2 class="services-contact-img-header">رزرو آنلاین نوبت</h2>
+              <p class="services-contact-img-text">
+                در چند دقیقه نوبت خود را رزرو کنید و ما<br />
+                در کوتاه ترین زمان با شما تماس خواهیم گرفت.
+              </p>
+              <ul class="services-contact-img-icon">
+                <li>
+                  <span class="services-contact-img-icons"
+                    ><svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="#6b7280"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_4418_7535)">
+                        <path
+                          d="M8 5.75C7.59 5.75 7.25 5.41 7.25 5V2C7.25 1.59 7.59 1.25 8 1.25C8.41 1.25 8.75 1.59 8.75 2V5C8.75 5.41 8.41 5.75 8 5.75Z"
+                        />
+                        <path
+                          d="M16 5.75C15.59 5.75 15.25 5.41 15.25 5V2C15.25 1.59 15.59 1.25 16 1.25C16.41 1.25 16.75 1.59 16.75 2V5C16.75 5.41 16.41 5.75 16 5.75Z"
+                        />
+                        <path
+                          d="M8.5 14.5003C8.37 14.5003 8.24 14.4703 8.12 14.4203C7.99 14.3703 7.89 14.3003 7.79 14.2103C7.61 14.0203 7.5 13.7703 7.5 13.5003C7.5 13.3703 7.53 13.2403 7.58 13.1203C7.63 13.0003 7.7 12.8903 7.79 12.7903C7.89 12.7003 7.99 12.6303 8.12 12.5803C8.48 12.4303 8.93 12.5103 9.21 12.7903C9.39 12.9803 9.5 13.2403 9.5 13.5003C9.5 13.5603 9.49 13.6303 9.48 13.7003C9.47 13.7603 9.45 13.8203 9.42 13.8803C9.4 13.9403 9.37 14.0003 9.33 14.0603C9.3 14.1103 9.25 14.1603 9.21 14.2103C9.02 14.3903 8.76 14.5003 8.5 14.5003Z"
+                        />
+                        <path
+                          d="M12 14.5008C11.87 14.5008 11.74 14.4709 11.62 14.4209C11.49 14.3709 11.39 14.3008 11.29 14.2108C11.11 14.0208 11 13.7708 11 13.5008C11 13.3708 11.03 13.2408 11.08 13.1208C11.13 13.0008 11.2 12.8909 11.29 12.7909C11.39 12.7009 11.49 12.6308 11.62 12.5808C11.98 12.4208 12.43 12.5109 12.71 12.7909C12.89 12.9809 13 13.2408 13 13.5008C13 13.5608 12.99 13.6309 12.98 13.7009C12.97 13.7609 12.95 13.8209 12.92 13.8809C12.9 13.9409 12.87 14.0008 12.83 14.0608C12.8 14.1108 12.75 14.1608 12.71 14.2108C12.52 14.3908 12.26 14.5008 12 14.5008Z"
+                        />
+                        <path
+                          d="M15.5 14.5008C15.37 14.5008 15.24 14.4709 15.12 14.4209C14.99 14.3709 14.89 14.3008 14.79 14.2108C14.75 14.1608 14.71 14.1108 14.67 14.0608C14.63 14.0008 14.6 13.9409 14.58 13.8809C14.55 13.8209 14.53 13.7609 14.52 13.7009C14.51 13.6309 14.5 13.5608 14.5 13.5008C14.5 13.2408 14.61 12.9809 14.79 12.7909C14.89 12.7009 14.99 12.6308 15.12 12.5808C15.49 12.4208 15.93 12.5109 16.21 12.7909C16.39 12.9809 16.5 13.2408 16.5 13.5008C16.5 13.5608 16.49 13.6309 16.48 13.7009C16.47 13.7609 16.45 13.8209 16.42 13.8809C16.4 13.9409 16.37 14.0008 16.33 14.0608C16.3 14.1108 16.25 14.1608 16.21 14.2108C16.02 14.3908 15.76 14.5008 15.5 14.5008Z"
+                        />
+                        <path
+                          d="M8.5 17.9992C8.37 17.9992 8.24 17.9692 8.12 17.9192C8 17.8692 7.89 17.7992 7.79 17.7092C7.61 17.5192 7.5 17.2592 7.5 16.9992C7.5 16.8692 7.53 16.7392 7.58 16.6192C7.63 16.4892 7.7 16.3792 7.79 16.2892C8.16 15.9192 8.84 15.9192 9.21 16.2892C9.39 16.4792 9.5 16.7392 9.5 16.9992C9.5 17.2592 9.39 17.5192 9.21 17.7092C9.02 17.8892 8.76 17.9992 8.5 17.9992Z"
+                        />
+                        <path
+                          d="M12 17.9992C11.74 17.9992 11.48 17.8892 11.29 17.7092C11.11 17.5192 11 17.2592 11 16.9992C11 16.8692 11.03 16.7392 11.08 16.6192C11.13 16.4892 11.2 16.3792 11.29 16.2892C11.66 15.9192 12.34 15.9192 12.71 16.2892C12.8 16.3792 12.87 16.4892 12.92 16.6192C12.97 16.7392 13 16.8692 13 16.9992C13 17.2592 12.89 17.5192 12.71 17.7092C12.52 17.8892 12.26 17.9992 12 17.9992Z"
+                        />
+                        <path
+                          d="M15.5 18.0009C15.24 18.0009 14.98 17.8909 14.79 17.7109C14.7 17.6209 14.63 17.5109 14.58 17.3809C14.53 17.2609 14.5 17.1309 14.5 17.0009C14.5 16.8709 14.53 16.7409 14.58 16.6209C14.63 16.4909 14.7 16.3809 14.79 16.2909C15.02 16.0609 15.37 15.9509 15.69 16.0209C15.76 16.0309 15.82 16.0509 15.88 16.0809C15.94 16.1009 16 16.1309 16.06 16.1709C16.11 16.2009 16.16 16.2509 16.21 16.2909C16.39 16.4809 16.5 16.7409 16.5 17.0009C16.5 17.2609 16.39 17.5209 16.21 17.7109C16.02 17.8909 15.76 18.0009 15.5 18.0009Z"
+                        />
+                        <path
+                          d="M20.5 9.83984H3.5C3.09 9.83984 2.75 9.49984 2.75 9.08984C2.75 8.67984 3.09 8.33984 3.5 8.33984H20.5C20.91 8.33984 21.25 8.67984 21.25 9.08984C21.25 9.49984 20.91 9.83984 20.5 9.83984Z"
+                        />
+                        <path
+                          d="M16 22.75H8C4.35 22.75 2.25 20.65 2.25 17V8.5C2.25 4.85 4.35 2.75 8 2.75H16C19.65 2.75 21.75 4.85 21.75 8.5V17C21.75 20.65 19.65 22.75 16 22.75ZM8 4.25C5.14 4.25 3.75 5.64 3.75 8.5V17C3.75 19.86 5.14 21.25 8 21.25H16C18.86 21.25 20.25 19.86 20.25 17V8.5C20.25 5.64 18.86 4.25 16 4.25H8Z"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_4418_7535">
+                          <rect width="24" height="24" fill="white" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    انتخاب تاریخ و ساعت دلخواه</span
+                  >
+                </li>
+                <li>
+                  <span class="services-contact-img-icons">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_4418_10053)">
+                        <path
+                          d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.3 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z"
+                          stroke="#6b7280"
+                          stroke-width="1.5"
+                          stroke-miterlimit="10"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_4418_10053">
+                          <rect width="24" height="24" fill="none" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    بدون نیاز به تماس تلفنی</span
+                  >
+                </li>
+
+                <li>
+                  <span class="services-contact-img-icons">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <g clip-path="url(#clip0_4418_9854)">
+                        <path
+                          d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z"
+                          stroke="#6b7280"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z"
+                          stroke="#6b7280"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z"
+                          stroke="#6b7280"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                        <path
+                          d="M15 11H9"
+                          stroke="#6b7280"
+                          stroke-width="1.5"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        />
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_4418_9854">
+                          <rect width="24" height="24" fill="none" />
+                        </clipPath>
+                      </defs>
+                    </svg>
+                    تایید سریع نوبت</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+          <form action="#" class="services-contact-form-container">
+            <div class="services-contact-input-group">
+              <input type="text" placeholder="نام و نام‌خانوادگی" />
+              <span
+                ><svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="#6b7280"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_3111_32711)">
+                    <path
+                      d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"
+                    />
+                    <path
+                      d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_3111_32711">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs></svg
+              ></span>
+            </div>
+            <div class="services-contact-input-group">
+              <input
+                id="services-num-input"
+                type="tel"
+                pattern="[0-9]{11}"
+                required
+                placeholder="شماره تماس"
+              />
+              <span
+                ><svg
+                  class="diff-ic"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_4418_10053)">
+                    <path
+                      d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.3 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z"
+                      stroke="#6b7280"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                    ></path>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4418_10053">
+                      <rect width="24" height="24" fill="none"></rect>
+                    </clipPath>
+                  </defs></svg
+              ></span>
+            </div>
+            <div class="services-contact-input-group">
+              <div class="services-contact-custom-select">
+                <div class="services-contact-custom-select-btn">
+                  <span>دکتر مورد نظر</span>
+
+                  <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5" fill="currentColor" />
+                  </svg>
+                </div>
+
+                <ul class="services-contact-custom-select-options">
+                  <li>امیرحسین کشوری (متخصص عمومی و ترمیمی)</li>
+                  <li>سارا کشاورز (متخصص ارتودنسی)</li>
+                </ul>
+              </div>
+            </div>
+            <div class="services-contact-input-group">
+              <div class="services-contact-custom-select">
+                <div class="services-contact-custom-select-btn">
+                  <span>خدمت مورد نظر</span>
+
+                  <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5" fill="currentColor" />
+                  </svg>
+                </div>
+
+                <ul class="services-contact-custom-select-options">
+                  <li>ایمپلنت دندان</li>
+                  <li>عصب‌کشی</li>
+                  <li>ترمیم دندان</li>
+                  <li>جرم‌گیری و بروساژ</li>
+                  <li>معاینه و مشاوره</li>
+                  <li>دندان پزشکی کودکان</li>
+                  <li>کشیدن دندان</li>
+                  <li>بلیچینگ دندان</li>
+                  <li>لمینت و کامپوزیت</li>
+                  <li>ارتودنسی</li>
+                </ul>
+              </div>
+            </div>
+            <div class="services-contact-input-group">
+              <input
+                class="datePicker"
+                id="datePicker"
+                readonly
+                placeholder="تاریخ مراجعه"
+              />
+              <span
+                ><svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="#6b7280"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_4418_7535)">
+                    <path
+                      d="M8 5.75C7.59 5.75 7.25 5.41 7.25 5V2C7.25 1.59 7.59 1.25 8 1.25C8.41 1.25 8.75 1.59 8.75 2V5C8.75 5.41 8.41 5.75 8 5.75Z"
+                    />
+                    <path
+                      d="M16 5.75C15.59 5.75 15.25 5.41 15.25 5V2C15.25 1.59 15.59 1.25 16 1.25C16.41 1.25 16.75 1.59 16.75 2V5C16.75 5.41 16.41 5.75 16 5.75Z"
+                    />
+                    <path
+                      d="M8.5 14.5003C8.37 14.5003 8.24 14.4703 8.12 14.4203C7.99 14.3703 7.89 14.3003 7.79 14.2103C7.61 14.0203 7.5 13.7703 7.5 13.5003C7.5 13.3703 7.53 13.2403 7.58 13.1203C7.63 13.0003 7.7 12.8903 7.79 12.7903C7.89 12.7003 7.99 12.6303 8.12 12.5803C8.48 12.4303 8.93 12.5103 9.21 12.7903C9.39 12.9803 9.5 13.2403 9.5 13.5003C9.5 13.5603 9.49 13.6303 9.48 13.7003C9.47 13.7603 9.45 13.8203 9.42 13.8803C9.4 13.9403 9.37 14.0003 9.33 14.0603C9.3 14.1103 9.25 14.1603 9.21 14.2103C9.02 14.3903 8.76 14.5003 8.5 14.5003Z"
+                    />
+                    <path
+                      d="M12 14.5008C11.87 14.5008 11.74 14.4709 11.62 14.4209C11.49 14.3709 11.39 14.3008 11.29 14.2108C11.11 14.0208 11 13.7708 11 13.5008C11 13.3708 11.03 13.2408 11.08 13.1208C11.13 13.0008 11.2 12.8909 11.29 12.7909C11.39 12.7009 11.49 12.6308 11.62 12.5808C11.98 12.4208 12.43 12.5109 12.71 12.7909C12.89 12.9809 13 13.2408 13 13.5008C13 13.5608 12.99 13.6309 12.98 13.7009C12.97 13.7609 12.95 13.8209 12.92 13.8809C12.9 13.9409 12.87 14.0008 12.83 14.0608C12.8 14.1108 12.75 14.1608 12.71 14.2108C12.52 14.3908 12.26 14.5008 12 14.5008Z"
+                    />
+                    <path
+                      d="M15.5 14.5008C15.37 14.5008 15.24 14.4709 15.12 14.4209C14.99 14.3709 14.89 14.3008 14.79 14.2108C14.75 14.1608 14.71 14.1108 14.67 14.0608C14.63 14.0008 14.6 13.9409 14.58 13.8809C14.55 13.8209 14.53 13.7609 14.52 13.7009C14.51 13.6309 14.5 13.5608 14.5 13.5008C14.5 13.2408 14.61 12.9809 14.79 12.7909C14.89 12.7009 14.99 12.6308 15.12 12.5808C15.49 12.4208 15.93 12.5109 16.21 12.7909C16.39 12.9809 16.5 13.2408 16.5 13.5008C16.5 13.5608 16.49 13.6309 16.48 13.7009C16.47 13.7609 16.45 13.8209 16.42 13.8809C16.4 13.9409 16.37 14.0008 16.33 14.0608C16.3 14.1108 16.25 14.1608 16.21 14.2108C16.02 14.3908 15.76 14.5008 15.5 14.5008Z"
+                    />
+                    <path
+                      d="M8.5 17.9992C8.37 17.9992 8.24 17.9692 8.12 17.9192C8 17.8692 7.89 17.7992 7.79 17.7092C7.61 17.5192 7.5 17.2592 7.5 16.9992C7.5 16.8692 7.53 16.7392 7.58 16.6192C7.63 16.4892 7.7 16.3792 7.79 16.2892C8.16 15.9192 8.84 15.9192 9.21 16.2892C9.39 16.4792 9.5 16.7392 9.5 16.9992C9.5 17.2592 9.39 17.5192 9.21 17.7092C9.02 17.8892 8.76 17.9992 8.5 17.9992Z"
+                    />
+                    <path
+                      d="M12 17.9992C11.74 17.9992 11.48 17.8892 11.29 17.7092C11.11 17.5192 11 17.2592 11 16.9992C11 16.8692 11.03 16.7392 11.08 16.6192C11.13 16.4892 11.2 16.3792 11.29 16.2892C11.66 15.9192 12.34 15.9192 12.71 16.2892C12.8 16.3792 12.87 16.4892 12.92 16.6192C12.97 16.7392 13 16.8692 13 16.9992C13 17.2592 12.89 17.5192 12.71 17.7092C12.52 17.8892 12.26 17.9992 12 17.9992Z"
+                    />
+                    <path
+                      d="M15.5 18.0009C15.24 18.0009 14.98 17.8909 14.79 17.7109C14.7 17.6209 14.63 17.5109 14.58 17.3809C14.53 17.2609 14.5 17.1309 14.5 17.0009C14.5 16.8709 14.53 16.7409 14.58 16.6209C14.63 16.4909 14.7 16.3809 14.79 16.2909C15.02 16.0609 15.37 15.9509 15.69 16.0209C15.76 16.0309 15.82 16.0509 15.88 16.0809C15.94 16.1009 16 16.1309 16.06 16.1709C16.11 16.2009 16.16 16.2509 16.21 16.2909C16.39 16.4809 16.5 16.7409 16.5 17.0009C16.5 17.2609 16.39 17.5209 16.21 17.7109C16.02 17.8909 15.76 18.0009 15.5 18.0009Z"
+                    />
+                    <path
+                      d="M20.5 9.83984H3.5C3.09 9.83984 2.75 9.49984 2.75 9.08984C2.75 8.67984 3.09 8.33984 3.5 8.33984H20.5C20.91 8.33984 21.25 8.67984 21.25 9.08984C21.25 9.49984 20.91 9.83984 20.5 9.83984Z"
+                    />
+                    <path
+                      d="M16 22.75H8C4.35 22.75 2.25 20.65 2.25 17V8.5C2.25 4.85 4.35 2.75 8 2.75H16C19.65 2.75 21.75 4.85 21.75 8.5V17C21.75 20.65 19.65 22.75 16 22.75ZM8 4.25C5.14 4.25 3.75 5.64 3.75 8.5V17C3.75 19.86 5.14 21.25 8 21.25H16C18.86 21.25 20.25 19.86 20.25 17V8.5C20.25 5.64 18.86 4.25 16 4.25H8Z"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4418_7535">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs></svg
+              ></span>
+            </div>
+            <div class="services-contact-input-group">
+              <div class="services-contact-custom-select">
+                <div class="services-contact-custom-select-btn">
+                  <span class="services-time-span">ساعت مراجعه</span>
+                  <svg class="arrow" width="20" height="20" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5" fill="currentColor" />
+                  </svg>
+                </div>
+
+                <ul class="services-contact-custom-select-options">
+                  <li>8</li>
+                  <li class="services-contact-custom-select-option-disable">
+                    8:30
+                  </li>
+                  <li>9</li>
+                  <li>9:30</li>
+                  <li>10</li>
+                  <li>10:30</li>
+                  <li>11</li>
+                  <li>11:30</li>
+                  <li>12</li>
+                  <li>12:30</li>
+                  <li>13</li>
+                  <li class="services-contact-custom-select-option-disable">
+                    13:30
+                  </li>
+                  <li>14</li>
+                  <li>14:30</li>
+                  <li>15</li>
+                  <li>15:30</li>
+                  <li class="services-contact-custom-select-option-disable">
+                    16
+                  </li>
+                  <li>16:30</li>
+                  <li>17</li>
+                  <li>17:30</li>
+                  <li>18</li>
+                  <li>18:30</li>
+                  <li>19</li>
+                </ul>
+              </div>
+            </div>
+            <div class="services-contact-input-group">
+              <textarea placeholder="پیام شما (اختیاری)"></textarea>
+            </div>
+            <input class="services-reserve-btn" type="submit" value="رزرو نوبت">
+          </form>
+        </article>
       </section>
-     </main>
+      <section class="about-us-section section-center">
+        
+      </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-date@1.1.0/dist/persian-date.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
+    <script src="./JS/datePicker.js"></script>
+    <script src="./JS/services-contact.js"></script>
   </body>
 </html>
