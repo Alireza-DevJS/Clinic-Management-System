@@ -691,15 +691,21 @@ Services Styles
 ================
 */
 
+.services-cards-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+}
+
 .services-section {
   margin-top: 5rem;
 }
 
-.services-header {
+.sections-header {
   text-align: center;
 }
 
-.services-header-text {
+.sections-header-text {
   color: var(--color-grey-1);
   margin-bottom: 7px;
 }
@@ -711,6 +717,7 @@ Services Styles
 }
 
 .services-card {
+  cursor: default;
   margin: 0 auto;
   width: 185px;
   height: 220px;
@@ -724,6 +731,11 @@ Services Styles
   padding: 10px;
   margin-bottom: 1rem;
   box-shadow: var(--light-shadow);
+  transition: var(--transition);
+}
+.services-card:hover {
+  scale: 1.05;
+  box-shadow: var(--dark-shadow);
 }
 
 .services-card-header {
@@ -1004,3 +1016,5 @@ Services Styles
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+/* 
