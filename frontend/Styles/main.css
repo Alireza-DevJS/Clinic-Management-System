@@ -1078,7 +1078,7 @@ About Us Styles
 }
 
 .about-us-doctor-services-list {
-  border: solid 1px var(border-primary-color);
+  border: solid 1px var(--border-primary-color);
   width: 350px;
   height: 50px;
   margin: 10px auto 0;
@@ -1212,4 +1212,60 @@ Portfolio Styles
 
 .portfolio-filter-active span svg path{
   stroke: var(--color-white);
+}
+
+.portfolio-card-article {
+  background: var(--color-white);
+  padding: 1rem;
+  border-radius: 15px;
+}
+
+.portfolio-card-img {
+  border-radius: 15px;
+  max-height: 600px;
+  margin: 0 auto;
+}
+
+.portfolio-card-img-container {
+  position: relative;
+  max-width: 500px;
+  max-height: 600px;
+  margin: 0 auto;
+}
+
+.portfolio-card-view-info-container {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  gap: 5px;
+}
+
+.portfolio-card-view-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 90px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 5px 20px;
+  font-size: 14px;
+  color: var(--color-white);
+  cursor: default;
+  border-radius: 20px;
+}
+
+.portfolio-card-like {
+  color: #f43f5e;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.portfolio-card-like:hover {
+  background: #f43f5e;
+  color: var(--color-white);
+}
+.portfolio-card-like:hover svg g path {
+  stroke: var(--color-white);
+  fill: none;
 }
