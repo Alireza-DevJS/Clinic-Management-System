@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clinic Management || Home</title>
     <link rel="stylesheet" href="./Styles/main.css" />
+    <link rel="shortcut icon" href="img/Mehr-Icon.png" type="image/x-icon" />
 
     <link
       rel="stylesheet"
@@ -221,7 +222,7 @@
                   <div class="nav-account-avatar"><span>A</span></div>
                   <div class="nav-account-detail">
                     <span>Alireza</span>
-                    <span>09100506127</span>
+                    <span>0911234567</span>
                   </div>
                 </li>
                 <li class="nav-account-list">
@@ -2415,48 +2416,79 @@
           </ul>
         </div>
         <article class="portfolio-card-article">
-          <div class="portfolio-card-img-container">
-            <img
-              src="./img/Portfolio-img/Camposite.png"
-              alt="کامپوزیت دندان"
-              class="portfolio-card-img"
-            />
+          <div
+            class="portfolio-card-img-container"
+            x-data="{
+        position: 50,
+        dragging: false,
+
+        startDrag() {
+          this.dragging = true;
+       },
+
+        stopDrag() {
+          this.dragging = false;
+        },
+
+      move(event) {
+        if (!this.dragging) return;
+
+        const rect = $el.getBoundingClientRect();
+
+        const clientX =
+          event.touches?.[0]?.clientX ?? event.clientX;
+
+        this.position =
+          ((clientX - rect.left) / rect.width) * 100;
+
+        this.position = Math.max(0, Math.min(100, this.position));
+      }
+    }"
+            @mousemove="move($event)"
+            @touchmove.prevent="move($event)"
+            @mouseup.window="stopDrag"
+            @mouseleave="stopDrag"
+            @touchend.window="stopDrag"
+          >
+            <!-- Before -->
+            <div class="portfolio-card-before">
+              <img
+                src="./img/Portfolio-img/Before-Composite.png"
+                class="portfolio-card-img"
+                alt="قبل از کامپوزیت"
+                draggable="false"
+              />
+            </div>
+            <!-- After -->
+            <div
+              class="portfolio-card-after"
+              :style="`clip-path: inset(0 ${100-position}% 0 0)`"
+            >
+              <img
+                src="./img/Portfolio-img/After-Composite.png"
+                class="portfolio-card-img"
+                alt="بعد از کامپوزیت"
+                draggable="false"
+              />
+            </div>
+            <!-- Divider -->
+            <div class="portfolio-card-divider" :style="`left:${position}%`">
+              <button
+                class="portfolio-card-handle"
+                @mousedown="startDrag"
+                @touchstart.prevent="startDrag"
+              >
+                ← →
+              </button>
+            </div>
+            <!-- Labels -->
+            <span class="portfolio-card-label before"> بعد </span>
+
+            <span class="portfolio-card-label after"> قبل </span>
             <div
               class="portfolio-card-view-info-container"
               x-data="{ isLike: false }"
             >
-              <div class="portfolio-card-view-info">
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <g clip-path="url(#clip0_4418_9532)">
-                    <path
-                      d="M15.58 11.9999C15.58 13.9799 13.98 15.5799 12 15.5799C10.02 15.5799 8.42004 13.9799 8.42004 11.9999C8.42004 10.0199 10.02 8.41992 12 8.41992C13.98 8.41992 15.58 10.0199 15.58 11.9999Z"
-                      stroke="#ffffff"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M12 20.2707C15.53 20.2707 18.82 18.1907 21.11 14.5907C22.01 13.1807 22.01 10.8107 21.11 9.4007C18.82 5.8007 15.53 3.7207 12 3.7207C8.46997 3.7207 5.17997 5.8007 2.88997 9.4007C1.98997 10.8107 1.98997 13.1807 2.88997 14.5907C5.17997 18.1907 8.46997 20.2707 12 20.2707Z"
-                      stroke="#ffffff"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_4418_9532">
-                      <rect width="24" height="24" fill="none" />
-                    </clipPath>
-                  </defs>
-                </svg>
-                227
-              </div>
               <div
                 class="portfolio-card-view-info portfolio-card-like"
                 @click="isLike= !isLike"
@@ -2470,7 +2502,7 @@
                 >
                   <g clip-path="url(#clip0_4418_9902)">
                     <path
-                    :fill="isLike ? '#f43f5e' : ''"
+                      :fill="isLike ? '#f43f5e' : ''"
                       d="M12.62 20.8096C12.28 20.9296 11.72 20.9296 11.38 20.8096C8.48 19.8196 2 15.6896 2 8.68961C2 5.59961 4.49 3.09961 7.56 3.09961C9.38 3.09961 10.99 3.97961 12 5.33961C13.01 3.97961 14.63 3.09961 16.44 3.09961C19.51 3.09961 22 5.59961 22 8.68961C22 15.6896 15.52 19.8196 12.62 20.8096Z"
                       stroke="#f43f5e"
                       stroke-width="1.5"
@@ -2484,13 +2516,33 @@
                     </clipPath>
                   </defs>
                 </svg>
-                <span >15</span>
+                <span>15</span>
               </div>
             </div>
           </div>
           <div class="portfolio-card-info-container">
-            <div class="portfolio-card-info-header">
-              
+            <div class="portfolio-card-service">
+              <div class="portfolio-card-service-icon">
+                <img src="./Icons/Dental-Icons/dental-crown.png" alt="کامپوزیت سرامیکی">
+              </div>
+
+              <div>
+                <h3 class="portfolio-card-title">کامپوزیت دندان</h3>
+
+                <p class="portfolio-card-subtitle">طراحی لبخند طبیعی و زیبا</p>
+              </div>
+            </div>
+
+            <p class="portfolio-card-description">
+              اصلاح طرح لبخند با کامپوزیت برای ایجاد ظاهری طبیعی، هماهنگ و
+              درخشان بدون آسیب به مینای دندان.
+            </p>
+
+            <div class="portfolio-card-features">
+              <span>✨ زیبایی طبیعی</span>
+              <span>🛡 بدون تراش زیاد</span>
+              <span>💎 ماندگاری بالا</span>
+              <span>⚡ نتیجه فوری</span>
             </div>
           </div>
         </article>
