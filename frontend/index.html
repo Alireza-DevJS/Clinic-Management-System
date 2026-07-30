@@ -2087,7 +2087,10 @@
           </div>
         </article>
       </section>
-      <section class="portfolio-section section-center">
+      <section
+        class="portfolio-section section-center"
+        x-data="portfolioSlider()"
+      >
         <div class="sections-header">
           <h3 class="sections-header-text" style="margin-top: 5rem">
             نمونه درمان‌ها
@@ -2523,7 +2526,10 @@
           <div class="portfolio-card-info-container">
             <div class="portfolio-card-service">
               <div class="portfolio-card-service-icon">
-                <img src="./Icons/Dental-Icons/dental-crown.png" alt="کامپوزیت سرامیکی">
+                <img
+                  src="./Icons/Dental-Icons/dental-crown.png"
+                  alt="کامپوزیت سرامیکی"
+                />
               </div>
 
               <div>
@@ -2546,6 +2552,39 @@
             </div>
           </div>
         </article>
+        <div class="portfolio-slider">
+          <button class="slider-btn prev" @click="prev()">←</button>
+
+          <div class="portfolio-track" x-ref="track">
+            <template x-for="item in items" :key="item.id">
+              <article
+                class="portfolio-card"
+                @click="active=item.id"
+                :class="{active:active===item.id}"
+              >
+                <div class="portfolio-badge" x-text="item.title"></div>
+                <img :src="item.image" :alt="item.title" />
+
+                <div class="portfolio-card-footer">
+                  
+                </div>
+              </article>
+            </template>
+          </div>
+
+          <button class="slider-btn next" @click="next()">→</button>
+        </div>
+        <div class="slider-dots">
+          <template x-for="(_, index) in items" :key="index">
+            <button
+              class="slider-dot"
+              :class="{ active: currentIndex === index }"
+              @click="goTo(index)"
+            ></button>
+          </template>
+        </div>
+
+        <a href="#" class="portfolio-more-btn"> مشاهده همه نمونه درمان‌ها </a>
       </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -2553,5 +2592,6 @@
     <script src="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
     <script src="./JS/datePicker.js"></script>
     <script src="./JS/services-contact.js"></script>
+    <script src="./JS/portfolio.js"></script>
   </body>
 </html>
