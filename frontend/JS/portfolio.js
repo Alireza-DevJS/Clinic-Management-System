@@ -5,32 +5,97 @@ window.portfolioSlider = function () {
     items: [
       {
         id: 1,
-        title: "ایمپلنت",
+        title: "ایمپلنت دندان ",
+        subtitle: "لبخند طبیعی و زیبا",
+        description:
+          "جایگزینی دندان‌های از دست رفته با ایمپلنت برای بازگرداندن زیبایی، عملکرد و استحکام طبیعی لبخند.",
         image: "/frontend/img/Portfolio-img/After-Implant.png",
-        imgBefore: "/frontend/img/Portfolio-img/Before-Implant.png"
+        imgBefore: "/frontend/img/Portfolio-img/Before-Implant.png",
+        icon: "/frontend/Icons/Dental-Icons/implant.png",
+        altBefore:'قبل از ایمپلنت دندان',
+        altAfter:'بعد از ایمپلنت دندان',
+        features: [
+          "🦷 جایگزینی دائمی",
+          "✨ ظاهر طبیعی",
+          "💎 استحکام بالا",
+          "⚡ عملکرد مشابه دندان",
+        ],
       },
+
       {
         id: 2,
         title: "ارتودنسی",
+        subtitle: "لبخندی منظم، زیبا و ماندگار",
+        description:
+          "اصلاح نامرتبی دندان‌ها و ناهنجاری‌های فک برای ایجاد لبخندی سالم، هماهنگ و زیبا.",
         image: "/frontend/img/Portfolio-img/After-Orto.png",
-        imgBefore: "/frontend/img/Portfolio-img/Before-Orto.png"
+        imgBefore: "/frontend/img/Portfolio-img/Before-Orto.png",
+        icon: "/frontend/Icons/Dental-Icons/orthodontic.png",
+        altBefore:'قبل از ارتودنسی دندان',
+        altAfter:'بعد از ارتودنسی دندان',
+        features: [
+          "😁 مرتب شدن دندان‌ها",
+          "🦷 اصلاح بایت",
+          "📈 بهبود عملکرد فک",
+          "✨ لبخندی هماهنگ",
+        ],
       },
+
       {
         id: 3,
-        title: "کامپوزیت",
+        title: "کامپوزیت دندان",
+        subtitle: "زیبایی طبیعی با کامپوزیت حرفه‌ای",
+        description:
+          "اصلاح فرم و رنگ دندان‌ها با کامپوزیت برای داشتن لبخندی طبیعی، درخشان و جذاب در کوتاه‌ترین زمان.",
         image: "/frontend/img/Portfolio-img/After-Composite.png",
-        imgBefore: "/frontend/img/Portfolio-img/Before-Composite.png"
+        imgBefore: "/frontend/img/Portfolio-img/Before-Composite.png",
+        icon: "/frontend/Icons/Dental-Icons/dental-crown.png",
+        altBefore:'قبل از کامپوزیت دندان',
+        altAfter:'بعد از کامپوزیت دندان',
+        features: [
+          "✨ زیبایی طبیعی",
+          "🛡️ بدون تراش زیاد",
+          "💎 ماندگاری بالا",
+          "⚡ نتیجه فوری",
+        ],
       },
+
       {
         id: 4,
-        title: "لمینت",
+        title: "لمینت دندان",
+        subtitle: "لبخندی سفید، طبیعی و ماندگار",
+        description:
+          "اصلاح رنگ، فرم و فاصله دندان‌ها با لمینت سرامیکی برای ایجاد لبخندی زیبا و ماندگار.",
         image: "/frontend/img/Portfolio-img/After-Laminet.png",
-        imgBefore: "/frontend/img/Portfolio-img/Before-Laminet.png"
+        imgBefore: "/frontend/img/Portfolio-img/Before-Laminet.png",
+        icon: "/frontend/Icons/Dental-Icons/dental-crown.png",
+        altBefore:'قبل از لمینت دندان',
+        altAfter:'بعد از لمینت دندان',
+        features: [
+          "🤍 سفیدی طبیعی",
+          "💎 دوام بالا",
+          "😁 اصلاح فرم دندان",
+          "✨ لبخندی جذاب",
+        ],
       },
+
       {
         id: 5,
-        title: "جرم گیری",
+        title: "جرم‌گیری دندان",
+        subtitle: "دندان‌هایی تمیز و لبخندی سالم",
+        description:
+          "حذف جرم و پلاک‌های دندانی برای حفظ سلامت لثه، جلوگیری از بیماری‌های دهان و افزایش درخشندگی دندان‌ها.",
         image: "/frontend/img/Portfolio-img/Fixing.png",
+        // imgBefore: "/frontend/img/Portfolio-img/Before-Scaling.png",
+        icon: "/frontend/Icons/Dental-Icons/teeth-scaling.png",
+        altBefore:'قبل از جرم‌گیری دندان',
+        altAfter:'بعد از جرم‌گیری دندان',
+        features: [
+          "🦷 حذف جرم",
+          "🪥 پاکسازی کامل",
+          "💙 سلامت لثه",
+          "✨ درخشندگی دندان",
+        ],
       },
     ],
 
@@ -116,6 +181,9 @@ window.portfolioSlider = function () {
       });
 
       this.currentIndex = index;
+    },
+    get currentItem() {
+      return this.items.find((item) => item.id === this.active);
     },
   };
 };
