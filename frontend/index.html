@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Clinic Management || Home</title>
     <link rel="stylesheet" href="./Styles/main.css" />
+    <link rel="shortcut icon" href="img/Mehr-Icon.png" type="image/x-icon" />
 
     <link
       rel="stylesheet"
@@ -119,52 +120,50 @@
               </li>
             </ul>
             <div class="nav-action-container">
-              <a href="#" title="رزرو نوبت">
-                <button class="reserve-btn">
-                  <svg
-                    width="26"
-                    height="26"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_4418_9854)">
-                      <path
-                        d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z"
-                        stroke="#6b7280"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z"
-                        stroke="#6b7280"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z"
-                        stroke="#6b7280"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M15 11H9"
-                        stroke="#6b7280"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_4418_9854">
-                        <rect width="24" height="24" fill="none" />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </button>
+              <a href="#" title="رزرو نوبت" class="reserve-btn">
+                <svg
+                  width="26"
+                  height="26"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_4418_9854)">
+                    <path
+                      d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z"
+                      stroke="#6b7280"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z"
+                      stroke="#6b7280"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z"
+                      stroke="#6b7280"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M15 11H9"
+                      stroke="#6b7280"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath>
+                      <rect width="24" height="24" fill="none" />
+                    </clipPath>
+                  </defs>
+                </svg>
               </a>
               <button
                 class="account-btn"
@@ -223,7 +222,7 @@
                   <div class="nav-account-avatar"><span>A</span></div>
                   <div class="nav-account-detail">
                     <span>Alireza</span>
-                    <span>09100506127</span>
+                    <span>0911234567</span>
                   </div>
                 </li>
                 <li class="nav-account-list">
@@ -1222,8 +1221,9 @@
     <!-- # Services Start # -->
     <main>
       <section class="services-section section-center" id="services">
-
-          <p>مجموعه کامل خدمات دندان پزشکی برای شما و خانواده‌تان</p>
+        <div class="sections-header">
+          <h3 class="sections-header-text">خدمات ما</h3>
+          <p>مجموعه کامل خدمات دندانپزشکی برای شما و خانوادتان</p>
         </div>
         <div class="services-cards">
           <article class="services-card">
@@ -1777,7 +1777,10 @@
       <section class="about-us-section section-center">
         <div class="sections-header">
           <h3 class="sections-header-text">تیم درمان ما</h3>
-          <p class="about-us-header-text">متخصصانی متعهد، لبخندی ماندگار</p>
+          <p class="about-us-header-text">
+            متخصصانی <span class="section-headers-dec">متعهد</span>، لبخندی
+            ماندگار
+          </p>
           <p>
             دو پزشکی متخصص و تیمی در دستیاران حرفه‌ای در کنار شما هستند<br />
             تا بهترین تجربه درمانی را در محیطی آرام و مجهز برایتان فراهم کنند.
@@ -2084,11 +2087,481 @@
           </div>
         </article>
       </section>
+      <section
+        class="portfolio-section section-center"
+        x-data="portfolioSlider()"
+      >
+        <div class="sections-header">
+          <h3 class="sections-header-text" style="margin-top: 5rem">
+            نمونه درمان‌ها
+          </h3>
+          <p class="about-us-header-text">
+            لبخند‌هایی واقعی،
+            <span class="section-headers-dec">نتایجی ماندگار</span>
+          </p>
+          <p>
+            نگاهی به بخشی از لبخند‌هایی که با اعتماد شما و تلاش تیم ما، زیباتر،
+            سالم‌تر و ماندگار‌تر شده‌اند.
+          </p>
+        </div>
+        <div class="portfolio-filter" x-data="{ activeFilter: 1 }">
+          <ul class="portfolio-filter">
+            <li
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 1 }"
+              @click="activeFilter = 1"
+            >
+              <span
+                ><svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_4418_9626)">
+                    <path
+                      d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M12 2V22"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2 12H22"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4418_9626">
+                      <rect width="24" height="24" fill="none" />
+                    </clipPath>
+                  </defs></svg
+              ></span>
+              همه نمونه کار‌ها
+            </li>
+            <li
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 2 }"
+              @click="activeFilter = 2"
+            >
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_4418_9780)">
+                    <path
+                      d="M16.29 2.15039H7.69995C5.99995 2.15039 5.24995 3.00039 4.78995 4.04039L2.22995 9.80039C1.76995 10.8404 2.01995 12.3904 2.78995 13.2304L9.64995 20.7704C10.95 22.1904 13.07 22.1904 14.36 20.7704L21.21 13.2204C21.98 12.3704 22.23 10.8304 21.76 9.79039L19.2 4.03039C18.74 3.00039 17.99 2.15039 16.29 2.15039Z"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M3.5 8H20.5"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4418_9780">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              کامپوزیت
+            </li>
+            <li
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 3 }"
+              @click="activeFilter = 3"
+            >
+              <span
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_4418_10068)">
+                    <path
+                      d="M8.96997 22H14.97C19.97 22 21.97 20 21.97 15V9C21.97 4 19.97 2 14.97 2H8.96997C3.96997 2 1.96997 4 1.96997 9V15C1.96997 20 3.96997 22 8.96997 22Z"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M1.96997 12.7001L7.96997 12.6801C8.71997 12.6801 9.55997 13.2501 9.83997 13.9501L10.98 16.8301C11.24 17.4801 11.65 17.4801 11.91 16.8301L14.2 11.0201C14.42 10.4601 14.83 10.4401 15.11 10.9701L16.15 12.9401C16.46 13.5301 17.26 14.0101 17.92 14.0101H21.98"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4418_10068">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs></svg
+              ></span>
+              ارتودنسی
+            </li>
+            <li
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 4 }"
+              @click="activeFilter = 4"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_4418_9553)">
+                    <path
+                      d="M7.00999 18.0008L3 13.9908C1.66 12.6508 1.66 11.3208 3 9.98077L9.68 3.30078L17.03 10.6508C17.4 11.0208 17.4 11.6208 17.03 11.9908L11.01 18.0108C9.68999 19.3308 8.34999 19.3308 7.00999 18.0008Z"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M8.34998 1.94922L9.68998 3.28918"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2.06995 11.9197L17.1899 11.2598"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M3 22H16"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M18.85 15C18.85 15 17 17.01 17 18.24C17 19.26 17.83 20.09 18.85 20.09C19.87 20.09 20.7 19.26 20.7 18.24C20.7 17.01 18.85 15 18.85 15Z"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_4418_9553">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              لمینت
+            </li>
+            <li
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 5 }"
+              @click="activeFilter = 5"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_655_7203)">
+                    <path
+                      d="M2 12H3.11M20.89 12H22M12 22V20.89M12 3.11V2M19.11 4.89L16.44 7.56M7.56 7.56L4.89 4.89M7.56 16.44L4.89 19.11M19.11 19.11L16.44 16.44M17.56 12C14.45 12 12 14.44 12 17.56C12 14.45 9.56 12 6.44 12C9.55 12 12 9.56 12 6.44C12 9.55 14.44 12 17.56 12Z"
+                      stroke="#0ea5e9"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_655_7203">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              ایمپلنت
+            </li>
+            <li
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 6 }"
+              @click="activeFilter = 6"
+            >
+              <span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <g clip-path="url(#clip0_3280_13091)">
+                    <path
+                      d="M22.94 19.61L21.8 19.87C20.98 20.06 20.34 20.7 20.15 21.52L19.88 22.66C19.85 22.78 19.68 22.78 19.65 22.66L19.39 21.52C19.2 20.7 18.56 20.06 17.74 19.87L16.6 19.6C16.48 19.57 16.48 19.4 16.6 19.37L17.74 19.11C18.56 18.92 19.2 18.28 19.39 17.46L19.66 16.32C19.69 16.2 19.86 16.2 19.89 16.32L20.15 17.46C20.34 18.28 20.98 18.92 21.8 19.11L22.94 19.38C23.06 19.41 23.06 19.58 22.94 19.61Z"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-miterlimit="10"
+                    />
+                    <path
+                      d="M16.44 2H18.66C20.5 2 21.99 3.49 21.99 5.33V7.55"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2 16.4399V18.6599C2 20.4999 3.49 21.9899 5.33 21.9899H7.55"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M2 7.56001V5.34001C2 3.50001 3.49 2.01001 5.33 2.01001H7.55"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M16.17 11.17C16.17 10.71 15.8 10.34 15.34 10.34H13.67V8.66997C13.67 8.20997 13.3 7.83997 12.84 7.83997H11.17C10.71 7.83997 10.34 8.20997 10.34 8.66997V10.34H8.67003C8.21003 10.34 7.84003 10.71 7.84003 11.17V12.84C7.84003 13.3 8.21003 13.67 8.67003 13.67H10.34V15.34C10.34 15.8 10.71 16.17 11.17 16.17H12.84C13.3 16.17 13.67 15.8 13.67 15.34V13.67H15.34C15.8 13.67 16.17 13.3 16.17 12.84V11.17Z"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_3280_13091">
+                      <rect width="24" height="24" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              ترمیم و عصب‌کشی
+            </li>
+            <li
+              class="portfolio-filter-item"
+              class="portfolio-filter-item"
+              :class="{ 'portfolio-filter-active': activeFilter === 7 }"
+              @click="activeFilter = 7"
+            >
+              <span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clip-path="url(#clip0_655_7266)">
+                    <path
+                      d="M7.56 2C7.56 5.11 10 7.56 13.12 7.56C10.01 7.56 7.56 10 7.56 13.12C7.56 10.01 5.12 7.56 2 7.56C5.11 7.56 7.56 5.12 7.56 2Z"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M16.4399 10.89C16.4399 14 18.8799 16.45 21.9999 16.45C18.8899 16.45 16.4399 18.89 16.4399 22.01C16.4399 18.9 13.9999 16.45 10.8799 16.45C13.9899 16.45 16.4399 14.01 16.4399 10.89Z"
+                      stroke="#fff"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_655_7266">
+                      <rect width="24" height="24" fill="none" />
+                    </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              جرم‌گیری
+            </li>
+          </ul>
+        </div>
+        <article class="portfolio-card-article">
+          <div
+            class="portfolio-card-img-container"
+            x-data="{
+        position: 50,
+        dragging: false,
+
+        startDrag() {
+          this.dragging = true;
+       },
+
+        stopDrag() {
+          this.dragging = false;
+        },
+
+      move(event) {
+        if (!this.dragging) return;
+
+        const rect = $el.getBoundingClientRect();
+
+        const clientX =
+          event.touches?.[0]?.clientX ?? event.clientX;
+
+        this.position =
+          ((clientX - rect.left) / rect.width) * 100;
+
+        this.position = Math.max(0, Math.min(100, this.position));
+      }
+    }"
+            @mousemove="move($event)"
+            @touchmove.prevent="move($event)"
+            @mouseup.window="stopDrag"
+            @mouseleave="stopDrag"
+            @touchend.window="stopDrag"
+          >
+            <!-- Before -->
+            <div class="portfolio-card-before">
+              <img
+                :src="currentItem.imgBefore"
+                class="portfolio-card-img"
+                :alt="currentItem.altBefore"
+                draggable="false"
+              />
+            </div>
+            <!-- After -->
+            <div
+              class="portfolio-card-after"
+              :style="`clip-path: inset(0 ${100-position}% 0 0)`"
+            >
+              <img
+                :src="currentItem.image"
+                class="portfolio-card-img"
+                :alt="currentItem.altAfter"
+                draggable="false"
+              />
+            </div>
+            <!-- Divider -->
+            <div class="portfolio-card-divider" :style="`left:${position}%`">
+              <button
+                class="portfolio-card-handle"
+                @mousedown="startDrag"
+                @touchstart.prevent="startDrag"
+              >
+                ← →
+              </button>
+            </div>
+            <!-- Labels -->
+            <span class="portfolio-card-label before"> بعد </span>
+
+            <span class="portfolio-card-label after"> قبل </span>
+          </div>
+          <div class="portfolio-card-info-container">
+            <div class="portfolio-card-service">
+              <div class="portfolio-card-service-icon">
+                <img
+                  :src="currentItem.icon"
+                  alt="کامپوزیت سرامیکی"
+                />
+              </div>
+
+              <div>
+                <h3
+                  class="portfolio-card-title"
+                  x-text="currentItem.title"
+                ></h3>
+
+                <p
+                  class="portfolio-card-subtitle"
+                  x-text="currentItem.subtitle"
+                ></p>
+              </div>
+            </div>
+
+            <p
+              class="portfolio-card-description"
+              x-text="currentItem.description"
+            ></p>
+
+            <div class="portfolio-card-features">
+              <template x-for="feature in currentItem.features" :key="feature">
+                <span x-text="feature"></span>
+              </template>
+            </div>
+          </div>
+        </article>
+        <div class="portfolio-slider">
+          <button class="slider-btn prev" @click="prev()">←</button>
+
+          <div class="portfolio-track" x-ref="track">
+            <template x-for="item in items" :key="item.id">
+              <article
+                class="portfolio-card"
+                @click="active=item.id"
+                :class="{active:active===item.id}"
+              >
+                <div class="portfolio-badge" x-text="item.title"></div>
+                <img :src="item.image" :alt="item.title" />
+
+                <div class="portfolio-card-footer">
+                  <span x-text="item.title"></span>
+                  <p x-text="item.subtitle"></p>
+                </div>
+              </article>
+            </template>
+          </div>
+          <button class="slider-btn next" @click="next()">→</button>
+        </div>
+        <div class="slider-dots">
+          <template x-for="(_, index) in items" :key="index">
+            <button
+              class="slider-dot"
+              :class="{ active: currentIndex === index }"
+              @click="goTo(index)"
+            ></button>
+          </template>
+        </div>
+        <a href="#" class="portfolio-more-btn">  مشاهده همه نمونه درمان‌ها <span>←</span></a>
+      </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/persian-date@1.1.0/dist/persian-date.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/js/persian-datepicker.min.js"></script>
     <script src="./JS/datePicker.js"></script>
     <script src="./JS/services-contact.js"></script>
+    <script src="./JS/portfolio.js"></script>
   </body>
 </html>
