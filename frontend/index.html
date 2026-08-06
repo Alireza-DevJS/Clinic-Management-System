@@ -2555,10 +2555,7 @@
           مشاهده همه نمونه درمان‌ها <span>←</span></a
         >
       </section>
-      <section
-        class="patient-testimonials section-center"
-        x-data="patientTestimonials()"
-      >
+      <section class="patient-testimonials section-center">
         <div class="sections-header">
           <h3 class="sections-header-text" style="margin-top: 5rem">
             نظرات بیماران
@@ -2631,10 +2628,8 @@
                   </clipPath>
                 </defs></svg
               ><span>
-                <span
-                >+10</span
-              >
-              <span>سال تجربه</span>
+                <span>+10</span>
+                <span>سال تجربه</span>
               </span>
             </li>
             <li class="patient-testimonials-statistics-item">
@@ -2667,10 +2662,8 @@
                   </clipPath>
                 </defs></svg
               ><span>
-                <span
-                >+3000</span
-              >
-              <span>بیمار خوشحال</span>
+                <span>+3000</span>
+                <span>بیمار خوشحال</span>
               </span>
             </li>
             <li class="patient-testimonials-statistics-item">
@@ -2703,13 +2696,108 @@
                   </clipPath>
                 </defs></svg
               ><span>
-                <span
-                >%98</span
-              >
-              <span>رضایت بیماران</span>
+                <span>%98</span>
+                <span>رضایت بیماران</span>
               </span>
             </li>
           </ul>
+        </div>
+        <div
+          class="patient-testimonials-slider container"
+          x-data="testimonialSlider()"
+          x-init="startAutoPlay()"
+        >
+          <div class="patient-testimonials-slider">
+            <!-- Previous -->
+            <button class="patient-testimonials-arrow prev" @click="prev()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="#0ea5e9"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10.7402 15.5297L14.2602 11.9997L10.7402 8.46973"
+                  stroke="#0ea5e9"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+
+            <div class="patient-testimonials-track">
+              <template x-for="(item,index) in testimonials" :key="index">
+                <article
+                  class="patient-testimonial-card"
+                  :class="{ active:index===current }"
+                >
+                  <div class="patient-testimonial-quote">
+                    <i class="ri-double-quotes-r"></i>
+                  </div>
+
+                  <p class="patient-testimonial-text" x-text="item.text"></p>
+
+                  <div class="patient-testimonial-stars">★★★★★</div>
+
+                  <div class="patient-testimonial-user">
+                    <img
+                      :src="item.avatar"
+                      class="patient-testimonial-avatar"
+                    />
+
+                    <div>
+                      <h4
+                        class="patient-testimonial-name"
+                        x-text="item.name"
+                      ></h4>
+
+                      <span
+                        class="patient-testimonial-service"
+                        x-text="item.service"
+                      ></span>
+                    </div>
+                  </div>
+                </article>
+              </template>
+            </div>
+
+            <!-- Next -->
+            <button class="patient-testimonials-arrow next" @click="next()">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                  stroke="#0ea5e9"
+                  stroke-width="1.5"
+                  stroke-miterlimit="10"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+                <path
+                  d="M10.7402 15.5297L14.2602 11.9997L10.7402 8.46973"
+                  stroke="#0ea5e9"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -2719,5 +2807,6 @@
     <script src="./JS/datePicker.js"></script>
     <script src="./JS/services-contact.js"></script>
     <script src="./JS/portfolio.js"></script>
+    <script src="./JS/paitient-testimonials.js"></script>
   </body>
 </html>
