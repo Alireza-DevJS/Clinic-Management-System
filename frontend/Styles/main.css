@@ -3237,28 +3237,6 @@ Portfolio Styles
 
 /* login - signup */
 
-
-/* =========================
-   Reset
-========================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  direction: rtl;
-}
-
-body {
-  min-height: 100vh;
-  font-family: Vazirmatn, Arial, sans-serif;
-  background: #f3f6fb;
-}
-
-
 /* =========================
    Auth Page
 ========================= */
@@ -3271,15 +3249,26 @@ body {
 
   padding: 20px;
 
-  background:
+  /* background:
     radial-gradient(
       circle at top right,
       rgba(37, 99, 235, 0.06),
       transparent 40%
     ),
-    #f3f6fb;
-}
+    #f3f6fb; */
 
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(14, 165, 233, 0.16) 0%,
+      rgba(255, 255, 255, 0.03) 45%,
+      rgba(37, 99, 235, 0.12) 100%
+    ),
+    url(/frontend/img/Login\ &\ Signin/Back.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 /* =========================
    Auth Card
@@ -3301,7 +3290,6 @@ body {
     0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
-
 /* =========================
    Logo
 ========================= */
@@ -3319,9 +3307,7 @@ body {
   font-size: 38px;
   line-height: 1;
 
-  filter: drop-shadow(
-    0 4px 8px rgba(37, 99, 235, 0.12)
-  );
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.12));
 }
 
 .logo-text {
@@ -3344,7 +3330,6 @@ body {
   font-size: 11px;
   color: #6b7280;
 }
-
 
 /* =========================
    Tabs
@@ -3404,7 +3389,6 @@ body {
   border-radius: 10px;
 }
 
-
 /* =========================
    Form
 ========================= */
@@ -3430,7 +3414,6 @@ body {
   color: #374151;
 }
 
-
 /* =========================
    Inputs
 ========================= */
@@ -3455,8 +3438,7 @@ body {
 .input-wrapper:focus-within {
   border-color: #2563eb;
 
-  box-shadow:
-    0 0 0 3px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
 }
 
 .input-wrapper input {
@@ -3480,15 +3462,15 @@ body {
   color: #b0b7c3;
 }
 
-
 /* =========================
    Input Icon
 ========================= */
 
 .input-icon {
   position: absolute;
-
   right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
 
   width: 22px;
   height: 22px;
@@ -3497,20 +3479,43 @@ body {
   align-items: center;
   justify-content: center;
 
+  z-index: 20;
+}
+
+.password-toggle {
+  border: none;
+  outline: none;
+  background: transparent;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
+.password-toggle svg {
+  display: block;
+  width: 20px;
+  height: 20px;
   pointer-events: none;
 }
 
-.input-icon svg {
-  width: 20px;
-  height: 20px;
+.password-toggle svg path {
+  stroke: #9ca3af !important;
 }
 
-
-/* چون آیکون چشم سفید بود */
-.form-group:nth-child(2) .input-icon svg path {
-  stroke: #9ca3af;
+.input-wrapper input {
+  position: relative;
+  z-index: 1;
 }
-
 
 /* =========================
    Remember / Forgot
@@ -3559,7 +3564,6 @@ body {
   color: #1d4ed8;
 }
 
-
 /* =========================
    Submit Button
 ========================= */
@@ -3571,11 +3575,7 @@ body {
   border: none;
   border-radius: 7px;
 
-  background: linear-gradient(
-    135deg,
-    #2563eb,
-    #1d4ed8
-  );
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
 
   color: #ffffff;
 
@@ -3585,8 +3585,7 @@ body {
 
   cursor: pointer;
 
-  box-shadow:
-    0 7px 15px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 7px 15px rgba(37, 99, 235, 0.2);
 
   transition: 0.25s ease;
 }
@@ -3594,14 +3593,20 @@ body {
 .auth-submit:hover {
   transform: translateY(-2px);
 
-  box-shadow:
-    0 10px 20px rgba(37, 99, 235, 0.25);
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
 }
 
 .auth-submit:active {
   transform: translateY(0);
 }
 
+[x-cloak] {
+  display: none !important;
+}
+
+.auth-form {
+  transform-origin: top center;
+}
 
 /* =========================
    Responsive
@@ -3624,4 +3629,188 @@ body {
   .form-options {
     font-size: 10px;
   }
+}
+
+.forgot-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.forgot-icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+
+  border: 1px solid #dbeafe;
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+}
+
+.forgot-header h2 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #1e293b;
+}
+
+.forgot-header p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.9;
+
+  color: #94a3b8;
+}
+
+.back-to-login {
+  border: none;
+  background: transparent;
+
+  margin-top: 16px;
+
+  color: #2563eb;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-to-login:hover {
+  color: #1d4ed8;
+}
+
+.forgot-password {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  color: #2563eb;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #1d4ed8;
+}
+
+/* =========================
+   Verification Code
+========================= */
+
+.verification-code {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.verification-label {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+
+  text-align: right;
+}
+
+.code-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.code-inputs input {
+  width: 52px;
+  height: 54px;
+
+  padding: 0;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  outline: none;
+
+  text-align: center;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Hover */
+
+.code-inputs input:hover {
+  border-color: #cbd5e1;
+}
+
+/* Focus */
+
+.code-inputs input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10);
+
+  transform: translateY(-1px);
+}
+
+/* فقط عدد */
+
+.code-inputs input::placeholder {
+  color: #9ca3af;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+
+  .code-inputs {
+    gap: 7px;
+  }
+
+  .code-inputs input {
+    width: 46px;
+    height: 50px;
+
+    font-size: 18px;
+  }
+
 }

@@ -3,32 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Clinic Management || Login | Signup</title>
+
     <link rel="stylesheet" href="./Styles/main.css" />
+
     <link rel="shortcut icon" href="img/Mehr-Icon.png" type="image/x-icon" />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/persian-datepicker@1.2.0/dist/css/persian-datepicker.min.css"
-    />
-    <link rel="stylesheet" href="./Styles/persian-datepicker.min.css" />
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"
     ></script>
   </head>
+
   <body>
     <div
       class="auth-page"
       x-data="{
-    activeTab: 'login',
-    showPassword: false
-  }"
+        activeTab: 'login',
+        showPassword: false,
+        signupShowPassword: false,
+        codeSent: false
+      }"
     >
+      <!-- =========================
+           Auth Card
+      ========================== -->
+
       <div class="auth-card">
-        <!-- Logo -->
+        <!-- =========================
+             Logo
+        ========================== -->
+
         <div class="auth-logo">
-          <div class="logo-icon">🦷</div>
+          <div class="logo-icon">
+            <img
+              style="width: 65px"
+              src="./img/Mehr-Icon.png"
+              alt="کلینیک دندانپزشکی مهر"
+            />
+          </div>
 
           <div class="logo-text">
             <h1>مهر</h1>
@@ -36,10 +50,17 @@
           </div>
         </div>
 
-        <!-- Tabs -->
-        <div class="auth-tabs">
+        <!-- =========================
+             Login / Signup Tabs
+        ========================== -->
+
+        <div
+          class="auth-tabs"
+          x-show="activeTab === 'login' || activeTab === 'signup'"
+        >
           <button
-            class="auth-tab active"
+            type="button"
+            class="auth-tab"
             :class="{ 'active': activeTab === 'login' }"
             @click="activeTab = 'login'"
           >
@@ -47,6 +68,7 @@
           </button>
 
           <button
+            type="button"
             class="auth-tab"
             :class="{ 'active': activeTab === 'signup' }"
             @click="activeTab = 'signup'"
@@ -55,35 +77,44 @@
           </button>
         </div>
 
-        <!-- Login Form -->
-        <form class="auth-form" x-show="activeTab === 'login'" x-transition>
-          <!-- National Code -->
+        <!-- ==================================================
+             LOGIN FORM
+        =================================================== -->
+
+        <form
+          class="auth-form"
+          x-cloak
+          x-show="activeTab === 'login'"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+          <!-- Mobile / Email -->
+
           <div class="form-group">
             <label for="national-code"> شماره موبایل یا ایمیل </label>
 
             <div class="input-wrapper">
-              <span class="input-icon"
-                ><svg
+              <span class="input-icon">
+                <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
                   fill="#6b7280"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_3111_32711)">
-                    <path
-                      d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"
-                    />
-                    <path
-                      d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_3111_32711">
-                      <rect width="24" height="24" fill="white" />
-                    </clipPath>
-                  </defs></svg
-              ></span>
+                  <path
+                    d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"
+                  />
+
+                  <path
+                    d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z"
+                  />
+                </svg>
+              </span>
 
               <input
                 type="text"
@@ -94,14 +125,383 @@
           </div>
 
           <!-- Password -->
+
           <div class="form-group">
-            <label for="password"> رمز عبور </label>
+            <label for="login-password"> رمز عبور </label>
+
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M20.91 11.1203C20.91 16.0103 17.36 20.5903 12.51 21.9303C12.18 22.0203 11.82 22.0203 11.49 21.9303C6.63996 20.5903 3.08997 16.0103 3.08997 11.1203V6.73028C3.08997 5.91028 3.70998 4.98028 4.47998 4.67028L10.05 2.39031C11.3 1.88031 12.71 1.88031 13.96 2.39031L19.53 4.67028C20.29 4.98028 20.92 5.91028 20.92 6.73028L20.91 11.1203Z"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 12.5C13.1046 12.5 14 11.6046 14 10.5C14 9.39543 13.1046 8.5 12 8.5C10.8954 8.5 10 9.39543 10 10.5C10 11.6046 10.8954 12.5 12 12.5Z"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 12.5V15.5"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <!-- Password Toggle -->
+
+              <button
+                type="button"
+                class="password-toggle"
+                @mousedown.prevent
+                @click="showPassword = !showPassword"
+                aria-label="نمایش رمز عبور"
+              >
+                <!-- Eye Open -->
+
+                <svg
+                  x-show="!showPassword"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M15.58 11.9999C15.58 13.9799 13.98 15.5799 12 15.5799C10.02 15.5799 8.42004 13.9799 8.42004 11.9999C8.42004 10.0199 10.02 8.41992 12 8.41992C13.98 8.41992 15.58 10.0199 15.58 11.9999Z"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M12 20.2707C15.53 20.2707 18.82 18.1907 21.11 14.5907C22.01 13.1807 22.01 10.8107 21.11 9.4007C18.82 5.8007 15.53 3.7207 12 3.7207C8.46997 3.7207 5.17997 5.8007 2.88997 9.4007C1.98997 10.8107 1.98997 13.1807 2.88997 14.5907C5.17997 18.1907 8.46997 20.2707 12 20.2707Z"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                <!-- Eye Closed -->
+
+                <svg
+                  x-show="showPassword"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                >
+                  <path
+                    d="M14.53 9.46992L9.47004 14.5299C8.82004 13.8799 8.42004 12.9899 8.42004 11.9999C8.42004 10.0199 10.02 8.41992 12 8.41992C12.99 8.41992 13.88 8.81992 14.53 9.46992Z"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M17.82 5.77047C16.07 4.45047 14.07 3.73047 12 3.73047C8.46997 3.73047 5.17997 5.81047 2.88997 9.41047C1.98997 10.8205 1.98997 13.1905 2.88997 14.6005C3.67997 15.8405 4.59997 16.9105 5.59997 17.7705"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M8.42004 19.5297C9.56004 20.0097 10.77 20.2697 12 20.2697C15.53 20.2697 18.82 18.1897 21.11 14.5897C22.01 13.1797 22.01 10.8097 21.11 9.39969C20.78 8.87969 20.42 8.38969 20.05 7.92969"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M8.42004 19.5297L2 21.9993"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+
+                  <path
+                    d="M22 2L14.53 9.47"
+                    stroke="#9ca3af"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </button>
+
+              <input
+                :type="showPassword ? 'text' : 'password'"
+                id="login-password"
+                placeholder="رمز عبور"
+              />
+            </div>
+          </div>
+
+          <!-- Remember / Forgot -->
+
+          <div class="form-options">
+            <label class="remember-me">
+              <input type="checkbox" />
+
+              <span> مرا به خاطر بسپار </span>
+            </label>
+
+            <button
+              type="button"
+              class="forgot-password"
+              @click="activeTab = 'forgot'"
+            >
+              فراموشی رمز عبور
+            </button>
+          </div>
+
+          <!-- Submit -->
+
+          <button type="submit" class="auth-submit">ورود</button>
+        </form>
+
+        <!-- ==================================================
+             FORGOT PASSWORD
+        =================================================== -->
+
+        <form
+          class="auth-form forgot-form"
+          x-cloak
+          x-show="activeTab === 'forgot'"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+          <!-- Header -->
+
+          <div class="forgot-header">
+            <div class="forgot-icon">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M7 10V8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V10"
+                  stroke="#2563eb"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+
+                <rect
+                  x="4"
+                  y="10"
+                  width="16"
+                  height="11"
+                  rx="2"
+                  stroke="#2563eb"
+                  stroke-width="1.5"
+                />
+
+                <path
+                  d="M12 14V17"
+                  stroke="#2563eb"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+
+            <h2>بازیابی رمز عبور</h2>
+
+            <p>
+              شماره موبایل یا ایمیل خود را وارد کنید<br />
+              تا لینک بازیابی برای شما ارسال شود.
+            </p>
+          </div>
+
+          <!-- Contact -->
+
+          <div class="form-group">
+            <label for="forgot-contact"> شماره موبایل یا ایمیل </label>
+
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75Z"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                  />
+
+                  <path
+                    d="M20.59 22C20.59 18.55 16.32 15.75 12 15.75C7.68 15.75 3.41 18.55 3.41 22"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  />
+                </svg>
+              </span>
+
+              <input
+                type="text"
+                id="forgot-contact"
+                placeholder="شماره موبایل یا ایمیل"
+              />
+            </div>
+          </div>
+          <!-- Verification Code -->
+
+          <div class="verification-code" x-show="codeSent" x-cloak x-transition>
+            <label class="verification-label">
+              کد ۵ رقمی ارسال شده را وارد کنید
+            </label>
+
+            <div class="code-inputs" dir="ltr">
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <button type="button" class="auth-submit" @click="codeSent = true">
+            ارسال کد بازیابی
+          </button>
+
+          <!-- Back -->
+
+          <button
+            type="button"
+            class="back-to-login"
+            @click="activeTab = 'login'"
+          >
+            ← بازگشت به ورود
+          </button>
+        </form>
+
+        <!-- ==================================================
+             SIGNUP FORM
+        =================================================== -->
+
+        <form
+          class="auth-form"
+          x-cloak
+          x-show="activeTab === 'signup'"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+          <!-- Username -->
+
+          <div class="form-group">
+            <label for="signup-username"> نام کاربری </label>
+
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="#6b7280"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M12 12.75C8.83 12.75 6.25 10.17 6.25 7C6.25 3.83 8.83 1.25 12 1.25C15.17 1.25 17.75 3.83 17.75 7C17.75 10.17 15.17 12.75 12 12.75ZM12 2.75C9.66 2.75 7.75 4.66 7.75 7C7.75 9.34 9.66 11.25 12 11.25C14.34 11.25 16.25 9.34 16.25 7C16.25 4.66 14.34 2.75 12 2.75Z"
+                  />
+
+                  <path
+                    d="M20.5901 22.75C20.1801 22.75 19.8401 22.41 19.8401 22C19.8401 18.55 16.3202 15.75 12.0002 15.75C7.68015 15.75 4.16016 18.55 4.16016 22C4.16016 22.41 3.82016 22.75 3.41016 22.75C3.00016 22.75 2.66016 22.41 2.66016 22C2.66016 17.73 6.85015 14.25 12.0002 14.25C17.1502 14.25 21.3401 17.73 21.3401 22C21.3401 22.41 21.0001 22.75 20.5901 22.75Z"
+                  />
+                </svg>
+              </span>
+
+              <input
+                type="text"
+                id="signup-username"
+                placeholder="نام کاربری"
+              />
+            </div>
+          </div>
+
+          <!-- Phone -->
+
+          <div class="form-group">
+            <label for="signup-phone"> شماره موبایل </label>
+
+            <div class="input-wrapper">
+              <span class="input-icon">
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M21.97 18.33C21.97 18.69 21.89 19.06 21.72 19.42C21.55 19.78 21.33 20.12 21.04 20.44C20.55 20.98 20.01 21.37 19.4 21.62C18.8 21.87 18.15 22 17.45 22C16.43 22 15.34 21.76 14.19 21.27C13.04 20.78 11.89 20.12 10.75 19.29C9.6 18.45 8.51 17.52 7.47 16.49C6.44 15.45 5.51 14.36 4.68 13.22C3.86 12.08 3.2 10.94 2.72 9.81C2.24 8.67 2 7.58 2 6.54C2 5.86 2.12 5.21 2.36 4.61C2.6 4 2.98 3.44 3.51 2.94C4.15 2.31 4.85 2 5.59 2C5.87 2 6.15 2.06 6.4 2.18C6.66 2.3 6.89 2.48 7.07 2.74L9.39 6.01C9.57 6.26 9.7 6.49 9.79 6.71C9.88 6.92 9.93 7.13 9.93 7.32C9.93 7.56 9.86 7.8 9.72 8.03C9.59 8.26 9.4 8.5 9.16 8.74L8.4 9.53C8.29 9.64 8.24 9.77 8.24 9.93C8.24 10.01 8.25 10.08 8.27 10.16C8.3 10.24 8.33 10.3 8.35 10.36C8.53 10.69 8.84 11.12 9.28 11.64C9.73 12.16 10.21 12.69 10.73 13.22C11.27 13.75 11.79 14.24 12.32 14.69C12.84 15.13 13.27 15.43 13.61 15.61C13.66 15.63 13.72 15.66 13.79 15.69C13.87 15.72 13.95 15.73 14.04 15.73C14.21 15.73 14.34 15.67 14.45 15.56L15.21 14.81C15.46 14.56 15.7 14.37 15.93 14.25C16.16 14.11 16.39 14.04 16.64 14.04C16.83 14.04 17.03 14.08 17.25 14.17C17.47 14.26 17.7 14.39 17.95 14.56L21.26 16.91C21.52 17.09 21.7 17.3 21.81 17.55C21.91 17.8 21.97 18.05 21.97 18.33Z"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                    stroke-miterlimit="10"
+                  />
+                </svg>
+              </span>
+
+              <input type="text" id="signup-phone" placeholder="شماره موبایل" />
+            </div>
+          </div>
+
+          <!-- Signup Password -->
+
+          <div class="form-group">
+            <label for="signup-password"> رمز عبور </label>
 
             <div class="input-wrapper">
               <button
                 type="button"
                 class="input-icon password-toggle"
-                @click="showPassword = !showPassword"
+                @mousedown.prevent
+                @click="signupShowPassword = !signupShowPassword"
               >
                 <svg
                   width="24"
@@ -110,50 +510,127 @@
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <g clip-path="url(#clip0_4418_9532)">
-                    <path
-                      d="M15.58 11.9999C15.58 13.9799 13.98 15.5799 12 15.5799C10.02 15.5799 8.42004 13.9799 8.42004 11.9999C8.42004 10.0199 10.02 8.41992 12 8.41992C13.98 8.41992 15.58 10.0199 15.58 11.9999Z"
-                      stroke="#ffffff"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M12 20.2707C15.53 20.2707 18.82 18.1907 21.11 14.5907C22.01 13.1807 22.01 10.8107 21.11 9.4007C18.82 5.8007 15.53 3.7207 12 3.7207C8.46997 3.7207 5.17997 5.8007 2.88997 9.4007C1.98997 10.8107 1.98997 13.1807 2.88997 14.5907C5.17997 18.1907 8.46997 20.2707 12 20.2707Z"
-                      stroke="#ffffff"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_4418_9532">
-                      <rect width="24" height="24" fill="none" />
-                    </clipPath>
-                  </defs>
+                  <path
+                    d="M15.58 11.9999C15.58 13.9799 13.98 15.5799 12 15.5799C10.02 15.5799 8.42004 13.9799 8.42004 11.9999C8.42004 10.0199 10.02 8.41992 12 8.41992C13.98 8.41992 15.58 10.0199 15.58 11.9999Z"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                  />
+
+                  <path
+                    d="M12 20.2707C15.53 20.2707 18.82 18.1907 21.11 14.5907C22.01 13.1807 22.01 10.8107 21.11 9.4007C18.82 5.8007 15.53 3.7207 12 3.7207C8.46997 3.7207 5.17997 5.8007 2.88997 9.4007C1.98997 10.8107 1.98997 13.1807 2.88997 14.5907C5.17997 18.1907 8.46997 20.2707 12 20.2707Z"
+                    stroke="#6b7280"
+                    stroke-width="1.5"
+                  />
                 </svg>
               </button>
 
               <input
-                :type="showPassword ? 'text' : 'password'"
-                id="password"
+                :type="signupShowPassword ? 'text' : 'password'"
+                id="signup-password"
                 placeholder="رمز عبور"
               />
             </div>
           </div>
 
-          <!-- Remember -->
-          <div class="form-options">
-            <label class="remember-me">
-              <input type="checkbox" />
-              <span>مرا به خاطر بسپار</span>
+          <!-- Submit -->
+
+          <button
+            type="button"
+            class="auth-submit"
+            @click="activeTab = 'auth-register'"
+          >
+            ثبت نام
+          </button>
+        </form>
+
+        <!-- ==================================================
+             FORGOT PASSWORD
+        =================================================== -->
+
+        <form
+          class="auth-form forgot-form"
+          x-cloak
+          x-show="activeTab === 'auth-register'"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0"
+          x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-200"
+          x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+        >
+          <!-- Header -->
+
+          <div class="forgot-header">
+            <div class="forgot-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <g clip-path="url(#clip0_4418_9852)">
+                  <path
+                    d="M8.38 12.0001L10.79 14.4201L15.62 9.58008"
+                    stroke="#2563eb"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                  <path
+                    d="M10.75 2.45031C11.44 1.86031 12.57 1.86031 13.27 2.45031L14.85 3.81031C15.15 4.07031 15.71 4.28031 16.11 4.28031H17.81C18.87 4.28031 19.74 5.15031 19.74 6.21031V7.91031C19.74 8.30031 19.95 8.87031 20.21 9.17031L21.57 10.7503C22.16 11.4403 22.16 12.5703 21.57 13.2703L20.21 14.8503C19.95 15.1503 19.74 15.7103 19.74 16.1103V17.8103C19.74 18.8703 18.87 19.7403 17.81 19.7403H16.11C15.72 19.7403 15.15 19.9503 14.85 20.2103L13.27 21.5703C12.58 22.1603 11.45 22.1603 10.75 21.5703L9.17 20.2103C8.87 19.9503 8.31 19.7403 7.91 19.7403H6.18C5.12 19.7403 4.25 18.8703 4.25 17.8103V16.1003C4.25 15.7103 4.04 15.1503 3.79 14.8503L2.44 13.2603C1.86 12.5703 1.86 11.4503 2.44 10.7603L3.79 9.17031C4.04 8.87031 4.25 8.31031 4.25 7.92031V6.20031C4.25 5.14031 5.12 4.27031 6.18 4.27031H7.91C8.3 4.27031 8.87 4.06031 9.17 3.80031L10.75 2.45031Z"
+                    stroke="#2563eb"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_4418_9852">
+                    <rect width="24" height="24" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+
+            <h2>تایید شماره تماس</h2>
+
+            <p>کد ارسال شده به شماره تماس خود را وارد کنید.</p>
+          </div>
+          <!-- Verification Code -->
+
+          <div class="verification-code" x-transition>
+            <label class="verification-label">
+              کد ۵ رقمی ارسال شده را وارد کنید
             </label>
 
-            <a href="#" class="forgot-password"> فراموشی رمز عبور </a>
+            <div class="code-inputs" dir="ltr">
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+
+              <input type="text" maxlength="1" inputmode="numeric" />
+            </div>
           </div>
 
           <!-- Submit -->
-          <button type="submit" class="auth-submit">ورود</button>
+          <button type="button" class="auth-submit" @click="codeSent = true">
+            تایید کد
+          </button>
+
+          <!-- Back -->
+
+          <button
+            type="button"
+            class="back-to-login"
+            @click="activeTab = 'login'"
+          >
+            ← بازگشت به ورود
+          </button>
         </form>
       </div>
     </div>
