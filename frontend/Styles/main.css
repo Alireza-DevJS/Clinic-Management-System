@@ -3234,3 +3234,583 @@ Portfolio Styles
     padding: 20px;
   }
 }
+
+/* login - signup */
+
+/* =========================
+   Auth Page
+========================= */
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  /* background:
+    radial-gradient(
+      circle at top right,
+      rgba(37, 99, 235, 0.06),
+      transparent 40%
+    ),
+    #f3f6fb; */
+
+  background-image:
+    linear-gradient(
+      135deg,
+      rgba(14, 165, 233, 0.16) 0%,
+      rgba(255, 255, 255, 0.03) 45%,
+      rgba(37, 99, 235, 0.12) 100%
+    ),
+    url(/frontend/img/Login\ &\ Signin/Back.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   Auth Card
+========================= */
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+
+  background: #ffffff;
+
+  border: 1px solid #e5eaf2;
+  border-radius: 14px;
+
+  padding: 35px 32px 32px;
+
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.08),
+    0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+/* =========================
+   Logo
+========================= */
+
+.auth-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  margin-bottom: 28px;
+}
+
+.logo-icon {
+  font-size: 38px;
+  line-height: 1;
+
+  filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.12));
+}
+
+.logo-text {
+  text-align: right;
+}
+
+.logo-text h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1e3a5f;
+
+  line-height: 1.2;
+}
+
+.logo-text span {
+  display: block;
+
+  margin-top: 3px;
+
+  font-size: 11px;
+  color: #6b7280;
+}
+
+/* =========================
+   Tabs
+========================= */
+
+.auth-tabs {
+  display: flex;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  margin-bottom: 28px;
+}
+
+.auth-tab {
+  width: 50%;
+
+  border: none;
+  background: transparent;
+
+  padding: 12px 10px;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+
+  color: #9ca3af;
+
+  cursor: pointer;
+
+  position: relative;
+
+  transition: 0.25s ease;
+}
+
+.auth-tab:hover {
+  color: #2563eb;
+}
+
+.auth-tab.active {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.auth-tab.active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -1px;
+  right: 0;
+  left: 0;
+
+  height: 2px;
+
+  background: #2563eb;
+
+  border-radius: 10px;
+}
+
+/* =========================
+   Form
+========================= */
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.form-group label {
+  font-size: 12px;
+  font-weight: 500;
+
+  color: #374151;
+}
+
+/* =========================
+   Inputs
+========================= */
+
+.input-wrapper {
+  width: 100%;
+  height: 48px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  transition: 0.25s ease;
+}
+
+.input-wrapper:focus-within {
+  border-color: #2563eb;
+
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.input-wrapper input {
+  width: 100%;
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding: 0 45px 0 14px;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  color: #1f2937;
+}
+
+.input-wrapper input::placeholder {
+  color: #b0b7c3;
+}
+
+/* =========================
+   Input Icon
+========================= */
+
+.input-icon {
+  position: absolute;
+  right: 13px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 20;
+}
+
+.password-toggle {
+  border: none;
+  outline: none;
+  background: transparent;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+
+  pointer-events: auto;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
+.password-toggle svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.password-toggle svg path {
+  stroke: #9ca3af !important;
+}
+
+.input-wrapper input {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   Remember / Forgot
+========================= */
+
+.form-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: -3px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 11px;
+  color: #6b7280;
+
+  cursor: pointer;
+}
+
+.remember-me input {
+  width: 14px;
+  height: 14px;
+
+  accent-color: #2563eb;
+
+  cursor: pointer;
+}
+
+.forgot-password {
+  font-size: 11px;
+
+  color: #2563eb;
+
+  text-decoration: none;
+
+  transition: 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #1d4ed8;
+}
+
+/* =========================
+   Submit Button
+========================= */
+
+.auth-submit {
+  width: 100%;
+  height: 48px;
+
+  border: none;
+  border-radius: 7px;
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+
+  color: #ffffff;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow: 0 7px 15px rgba(37, 99, 235, 0.2);
+
+  transition: 0.25s ease;
+}
+
+.auth-submit:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 20px rgba(37, 99, 235, 0.25);
+}
+
+.auth-submit:active {
+  transform: translateY(0);
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+.auth-form {
+  transform-origin: top center;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 480px) {
+  .auth-page {
+    padding: 15px;
+  }
+
+  .auth-card {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+
+  .logo-icon {
+    font-size: 34px;
+  }
+
+  .form-options {
+    font-size: 10px;
+  }
+}
+
+.forgot-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.forgot-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.forgot-icon {
+  width: 58px;
+  height: 58px;
+
+  margin: 0 auto 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+
+  border: 1px solid #dbeafe;
+
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.08);
+}
+
+.forgot-header h2 {
+  margin: 0 0 8px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #1e293b;
+}
+
+.forgot-header p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.9;
+
+  color: #94a3b8;
+}
+
+.back-to-login {
+  border: none;
+  background: transparent;
+
+  margin-top: 16px;
+
+  color: #2563eb;
+
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.back-to-login:hover {
+  color: #1d4ed8;
+}
+
+.forgot-password {
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  color: #2563eb;
+
+  font-family: inherit;
+  font-size: inherit;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.forgot-password:hover {
+  color: #1d4ed8;
+}
+
+/* =========================
+   Verification Code
+========================= */
+
+.verification-code {
+  margin-top: 20px;
+  width: 100%;
+}
+
+.verification-label {
+  display: block;
+  margin-bottom: 12px;
+
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+
+  text-align: right;
+}
+
+.code-inputs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.code-inputs input {
+  width: 52px;
+  height: 54px;
+
+  padding: 0;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  outline: none;
+
+  text-align: center;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  color: #111827;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+/* Hover */
+
+.code-inputs input:hover {
+  border-color: #cbd5e1;
+}
+
+/* Focus */
+
+.code-inputs input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.10);
+
+  transform: translateY(-1px);
+}
+
+/* فقط عدد */
+
+.code-inputs input::placeholder {
+  color: #9ca3af;
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width: 480px) {
+
+  .code-inputs {
+    gap: 7px;
+  }
+
+  .code-inputs input {
+    width: 46px;
+    height: 50px;
+
+    font-size: 18px;
+  }
+
+}
