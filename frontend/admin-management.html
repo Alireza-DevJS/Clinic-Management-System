@@ -1,0 +1,672 @@
+<!doctype html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Clinic Management || مدیریت سایت</title>
+
+    <link rel="stylesheet" href="./Styles/main.css" />
+    <link rel="shortcut icon" href="img/Mehr-Icon.png" type="image/x-icon" />
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div x-data="{ isOpen: false }">
+        <!-- Navbar -->
+        <nav class="panel-nav-container">
+            <div class="panel-user-avatar-container">
+                <div class="panel-user-avatar-info">
+                    <div class="panel-user-info">
+                        <span class="panel-user-name">علیرضا درخشانفرد</span>
+                        <span class="panel-user-role">مدیر کلینیک</span>
+                    </div>
+                    <div class="panel-user-avatar">
+                        <img class="panel-user-avatar-img" src="./img/Face-Avatar/Avatar1.jpg" alt="نام شخص" />
+                    </div>
+                </div>
+
+                <div class="panel-nav-notif-container">
+                    <span class="panel-nav-notif-text">1</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_4418_9854)">
+                            <path d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15 11H9" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_4418_9854">
+                                <rect width="24" height="24" fill="none" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="panel-nav-search-container">
+                <input type="text" class="panel-nav-serach-input" placeholder="جستجو در پنل ..." />
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                    <path d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M22 22L20 20" stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </div>
+
+            <div class="panel-nav-menu-container">
+                <button class="panel-nav-menu-btn" @click="isOpen = true">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_4418_6187)">
+                            <path d="M3 7H21" stroke="#374151" stroke-width="1.5" stroke-linecap="round" />
+                            <path opacity="0.34" d="M3 12H21" stroke="#374151" stroke-width="1.5" stroke-linecap="round" />
+                            <path d="M3 17H21" stroke="#374151" stroke-width="1.5" stroke-linecap="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_4418_6187">
+                                <rect width="24" height="24" fill="none" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+
+        <div class="panel-content-container">
+            <!-- Aside -->
+            <aside class="panel-aside" x-data="{isActive: 10}" :class="{ 'panel-aside-open': isOpen }">
+                <div class="panel-aside-header">
+                    <button class="panel-aside-close-btn" @click="isOpen = false">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_4418_9821)">
+                                <path
+                                    d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                    stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M9.17004 14.8299L14.83 9.16992" stroke="#ef4444" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M14.83 14.8299L9.17004 9.16992" stroke="#ef4444" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4418_9821">
+                                    <rect width="24" height="24" fill="none" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                    <img src="./img/Mehr-Icon.png" alt="دندان پزشکی مهر" class="panel-aside-icon" />
+                    <h3>کلینیک دندان پزشکی مهر</h3>
+                    <p>لبخندی سالم، زیبا و ماندگار</p>
+                </div>
+                <div class="panel-aside-links-container">
+                    <ul class="panel-aside-list">
+                        <li class="panel-aside-link" @click="isActive = 1; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 1 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9815)">
+                                        <path d="M12 18V15" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M10.07 2.81985L3.14002 8.36985C2.36002 8.98985 1.86002 10.2998 2.03002 11.2798L3.36002 19.2398C3.60002 20.6598 4.96002 21.8098 6.40002 21.8098H17.6C19.03 21.8098 20.4 20.6498 20.64 19.2398L21.97 11.2798C22.13 10.2998 21.63 8.98985 20.86 8.36985L13.93 2.82985C12.86 1.96985 11.13 1.96985 10.07 2.81985Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9815">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">داشبورد</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 2; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 2 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9971)">
+                                        <path d="M8 2V5" stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16 2V5" stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.5 9.08984H20.5" stroke="#ffffff" stroke-width="1.5"
+                                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.6947 13.6992H15.7037" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.6947 16.6992H15.7037" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.9955 13.6992H12.0045" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.9955 16.6992H12.0045" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.29431 13.6992H8.30329" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.29431 16.6992H8.30329" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9971">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">نوبت‌ها</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 3; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 3 }">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_3111_32754)">
+                                        <path
+                                            d="M9.16006 10.87C9.06006 10.86 8.94006 10.86 8.83006 10.87C6.45006 10.79 4.56006 8.84 4.56006 6.44C4.56006 3.99 6.54006 2 9.00006 2C11.4501 2 13.4401 3.99 13.4401 6.44C13.4301 8.84 11.5401 10.79 9.16006 10.87Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M16.4098 4C18.3498 4 19.9098 5.57 19.9098 7.5C19.9098 9.39 18.4098 10.93 16.5398 11C16.4598 10.99 16.3698 10.99 16.2798 11"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M4.16021 14.56C1.74021 16.18 1.74021 18.82 4.16021 20.43C6.91021 22.27 11.4202 22.27 14.1702 20.43C16.5902 18.81 16.5902 16.17 14.1702 14.56C11.4302 12.73 6.92021 12.73 4.16021 14.56Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_3111_32754">
+                                            <rect width="24" height="24" fill="none" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">بیماران</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 4; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 4 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_3111_32742)">
+                                        <path
+                                            d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M3.41016 22C3.41016 18.13 7.26015 15 12.0002 15C12.9602 15 13.8902 15.13 14.7602 15.37"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M22 18C22 18.75 21.79 19.46 21.42 20.06C21.21 20.42 20.94 20.74 20.63 21C19.93 21.63 19.01 22 18 22C16.54 22 15.27 21.22 14.58 20.06C14.21 19.46 14 18.75 14 18C14 16.74 14.58 15.61 15.5 14.88C16.19 14.33 17.06 14 18 14C20.21 14 22 15.79 22 18Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16.4399 17.9995L17.4299 18.9895L19.5599 17.0195" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_3111_32742">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">پزشکان</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 5; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 5 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9854)">
+                                        <path
+                                            d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 11H9" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9854">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">خدمات</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 6; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 6 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9254)">
+                                        <path
+                                            d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M2.67004 18.9496L7.60004 15.6396C8.39004 15.1096 9.53004 15.1696 10.24 15.7796L10.57 16.0696C11.35 16.7396 12.61 16.7396 13.39 16.0696L17.55 12.4996C18.33 11.8296 19.59 11.8296 20.37 12.4996L22 13.8996"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9254">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">نمونه کارها</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 7; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 7 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9900)">
+                                        <path
+                                            d="M13.73 3.51063L15.49 7.03063C15.73 7.52063 16.37 7.99063 16.91 8.08063L20.1 8.61062C22.14 8.95062 22.62 10.4306 21.15 11.8906L18.67 14.3706C18.25 14.7906 18.02 15.6006 18.15 16.1806L18.86 19.2506C19.42 21.6806 18.13 22.6206 15.98 21.3506L12.99 19.5806C12.45 19.2606 11.56 19.2606 11.01 19.5806L8.02003 21.3506C5.88003 22.6206 4.58003 21.6706 5.14003 19.2506L5.85003 16.1806C5.98003 15.6006 5.75003 14.7906 5.33003 14.3706L2.85003 11.8906C1.39003 10.4306 1.86003 8.95062 3.90003 8.61062L7.09003 8.08063C7.62003 7.99063 8.26003 7.52063 8.50003 7.03063L10.26 3.51063C11.22 1.60063 12.78 1.60063 13.73 3.51063Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9900">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">نظرات بیماران</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 8; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 8 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9426)">
+                                        <path
+                                            d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.9965 11H16.0054" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.9955 11H12.0045" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M7.99451 11H8.00349" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9426">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">پیام‌ها و تماس‌ها</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 9; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 9 }">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_3111_32754)">
+                                        <path
+                                            d="M9.16006 10.87C9.06006 10.86 8.94006 10.86 8.83006 10.87C6.45006 10.79 4.56006 8.84 4.56006 6.44C4.56006 3.99 6.54006 2 9.00006 2C11.4501 2 13.4401 3.99 13.4401 6.44C13.4301 8.84 11.5401 10.79 9.16006 10.87Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M16.4098 4C18.3498 4 19.9098 5.57 19.9098 7.5C19.9098 9.39 18.4098 10.93 16.5398 11C16.4598 10.99 16.3698 10.99 16.2798 11"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M4.16021 14.56C1.74021 16.18 1.74021 18.82 4.16021 20.43C6.91021 22.27 11.4202 22.27 14.1702 20.43C16.5902 18.81 16.5902 16.17 14.1702 14.56C11.4302 12.73 6.92021 12.73 4.16021 14.56Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_3111_32754">
+                                            <rect width="24" height="24" fill="none" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">کاربران</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 10; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 10 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9440)">
+                                        <path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7.99998 3H8.99998C7.04998 8.84 7.04998 15.16 8.99998 21H7.99998"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 3C15.97 5.92 16.46 8.96 16.46 12" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3 16V15C5.92 15.97 8.96 16.46 12 16.46" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3 8.99961C8.84 7.04961 15.16 7.04961 21 8.99961" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M19.21 15.741L15.67 19.281C15.53 19.421 15.4 19.681 15.37 19.871L15.18 21.221C15.11 21.711 15.45 22.051 15.94 21.981L17.29 21.791C17.48 21.761 17.75 21.631 17.88 21.491L21.42 17.951C22.03 17.341 22.32 16.631 21.42 15.731C20.53 14.841 19.82 15.131 19.21 15.741Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M18.7001 16.25C19.0001 17.33 19.8401 18.17 20.9201 18.47"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9440">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">مدیریت سایت</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 11; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 11 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9935)">
+                                        <path
+                                            d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M2 12.8794V11.1194C2 10.0794 2.85 9.21945 3.9 9.21945C5.71 9.21945 6.45 7.93945 5.54 6.36945C5.02 5.46945 5.33 4.29945 6.24 3.77945L7.97 2.78945C8.76 2.31945 9.78 2.59945 10.25 3.38945L10.36 3.57945C11.26 5.14945 12.74 5.14945 13.65 3.57945L13.76 3.38945C14.23 2.59945 15.25 2.31945 16.04 2.78945L17.77 3.77945C18.68 4.29945 18.99 5.46945 18.47 6.36945C17.56 7.93945 18.3 9.21945 20.11 9.21945C21.15 9.21945 22.01 10.0694 22.01 11.1194V12.8794C22.01 13.9194 21.16 14.7794 20.11 14.7794C18.3 14.7794 17.56 16.0594 18.47 17.6294C18.99 18.5394 18.68 19.6994 17.77 20.2194L16.04 21.2094C15.25 21.6794 14.23 21.3994 13.76 20.6094L13.65 20.4194C12.75 18.8494 11.27 18.8494 10.36 20.4194L10.25 20.6094C9.78 21.3994 8.76 21.6794 7.97 21.2094L6.24 20.2194C5.33 19.6994 5.02 18.5294 5.54 17.6294C6.45 16.0594 5.71 14.7794 3.9 14.7794C2.85 14.7794 2 13.9194 2 12.8794Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9935">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">تنظیمات</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <article class="dashboard-container">
+                
+                <!-- Page Title -->
+                <div class="dashboard-title dashboard-title-flex">
+                    <div class="dashboard-text-container">
+                        <h3>مدیریت سایت</h3>
+                        <p>تنظیمات هدر، لوگو، نام سایت و اطلاعات فوتر</p>
+                        <p id="dashboardCurrentDate"></p>
+                    </div>
+                    <button type="submit" form="siteSettingsForm" class="action-btn" id="topSaveSiteBtn">
+                        ذخیره تغییرات سایت
+                    </button>
+                </div>
+
+                <!-- Main Form for API Connection -->
+                <form id="siteSettingsForm" class="site-mgmt-section" enctype="multipart/form-data">
+
+                    <!-- 1. بخش هویت سایت و لوگو -->
+                    <section class="site-mgmt-card">
+                        <div class="site-mgmt-card-header">
+                            <div>
+                                <h4>هویت سایت و لوگو</h4>
+                                <span>مدیریت نام سایت، شعار کلینیک و تصاویر لوگو در هدر و فوتر</span>
+                            </div>
+                        </div>
+
+                        <div class="edit-patient-form">
+                            <!-- نام سایت -->
+                            <div class="edit-patient-field">
+                                <label for="siteName">نام سایت (کلینیک)</label>
+                                <input type="text" id="siteName" name="site_name" value="کلینیک دندان پزشکی مهر" placeholder="مثلاً کلینیک دندان پزشکی مهر" required />
+                            </div>
+
+                            <!-- شعار یا زیرعنوان -->
+                            <div class="edit-patient-field">
+                                <label for="siteSubtitle">شعار / زیرعنوان سایت</label>
+                                <input type="text" id="siteSubtitle" name="site_subtitle" value="لبخندی سالم، زیبا و ماندگار" placeholder="مثلاً لبخندی سالم، زیبا و ماندگار" />
+                            </div>
+
+                            <!-- لوگوی اصلی سایت -->
+                            <div class="edit-patient-field">
+                                <label for="siteLogo">لوگوی اصلی سایت (هدر و فوتر)</label>
+                                <div class="site-logo-upload-box">
+                                    <div class="site-logo-preview">
+                                        <img id="siteLogoPreview" src="./img/Mehr-Icon.png" alt="لوگوی فعلی سایت" />
+                                    </div>
+                                    <div class="site-logo-input-wrap">
+                                        <input type="file" id="siteLogo" name="site_logo" accept="image/*" />
+                                        <small>فرمت‌های مجاز: PNG, SVG, WEBP (پیشنهادی: ۲۰۰×۲۰۰ پیکسل)</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- فاوآیکون (آیکون تب مرورگر) -->
+                            <div class="edit-patient-field">
+                                <label for="siteFavicon">آیکون تب مرورگر (Favicon)</label>
+                                <div class="site-logo-upload-box">
+                                    <div class="site-logo-preview favicon">
+                                        <img id="siteFaviconPreview" src="./img/Mehr-Icon.png" alt="فاوآیکون فعلی" />
+                                    </div>
+                                    <div class="site-logo-input-wrap">
+                                        <input type="file" id="siteFavicon" name="site_favicon" accept="image/*" />
+                                        <small>فرمت‌های مجاز: PNG, ICO (پیشنهادی: ۶۴×۶۴ پیکسل)</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 2. بخش توضیحات فوتر، خبرنامه و کپی‌رایت -->
+                    <section class="site-mgmt-card">
+                        <div class="site-mgmt-card-header">
+                            <div>
+                                <h4>متن‌های فوتر و کپی‌رایت</h4>
+                                <span>مدیریت توضیحات درباره کلینیک در فوتر، بخش خبرنامه و متن کپی‌رایت پایین سایت</span>
+                            </div>
+                        </div>
+
+                        <div class="edit-patient-form">
+                            <!-- توضیحات فوتر -->
+                            <div class="edit-patient-field full">
+                                <label for="footerDescription">متن معرفی کلینیک در فوتر (زیر لوگو)</label>
+                                <textarea id="footerDescription" name="footer_description" rows="4" placeholder="توضیحات کوتاه درباره خدمات و کلینیک در فوتر...">کلینیک تخصصی دندان‌پزشکی مهر با بهره‌گیری از جدیدترین تجهیزات روز دنیا و کادری مجرب، آماده ارائه کلیه خدمات درمانی و زیبایی دندان به شما مراجعین گرامی است.</textarea>
+                            </div>
+
+                            <!-- عنوان خبرنامه -->
+                            <div class="edit-patient-field">
+                                <label for="newsletterTitle">عنوان باکس خبرنامه فوتر</label>
+                                <input type="text" id="newsletterTitle" name="newsletter_title" value="عضویت در خبرنامه" placeholder="عنوان خبرنامه را وارد کنید" />
+                            </div>
+
+                            <!-- متن کپی رایت -->
+                            <div class="edit-patient-field">
+                                <label for="footerCopyright">متن کپی‌رایت (پایین فوتر)</label>
+                                <input type="text" id="footerCopyright" name="footer_copyright" value="تمامی حقوق این وب‌سایت متعلق به کلینیک دندان‌پزشکی مهر می‌باشد. © ۱۴۰۵" placeholder="متن کپی‌رایت پایین صفحه" />
+                            </div>
+
+                            <!-- توضیحات خبرنامه -->
+                            <div class="edit-patient-field full">
+                                <label for="newsletterDescription">توضیحات باکس خبرنامه فوتر</label>
+                                <input type="text" id="newsletterDescription" name="newsletter_description" value="برای اطلاع از آخرین تخفیف‌ها و مطالب آموزشی دندان‌پزشکی ایمیل یا شماره خود را ثبت کنید." placeholder="متن توضیحی خبرنامه..." />
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 3. بخش اطلاعات تماس در فوتر -->
+                    <section class="site-mgmt-card">
+                        <div class="site-mgmt-card-header">
+                            <div>
+                                <h4>اطلاعات تماس فوتر</h4>
+                                <span>مدیریت شماره‌های تماس، ایمیل و آدرس کلینیک در فوتر سایت</span>
+                            </div>
+                        </div>
+
+                        <div class="edit-patient-form">
+                            <!-- تلفن ثابت -->
+                            <div class="edit-patient-field">
+                                <label for="footerPhone1">شماره تلفن ثابت</label>
+                                <input type="text" id="footerPhone1" name="footer_phone_1" dir="ltr" value="021-88776655" placeholder="021-xxxxxxxx" />
+                            </div>
+
+                            <!-- تلفن همراه / پشتیبانی -->
+                            <div class="edit-patient-field">
+                                <label for="footerPhone2">شماره موبایل / نوبت‌دهی</label>
+                                <input type="text" id="footerPhone2" name="footer_phone_2" dir="ltr" value="09123456789" placeholder="0912xxxxxxx" />
+                            </div>
+
+                            <!-- ایمیل -->
+                            <div class="edit-patient-field">
+                                <label for="footerEmail">ایمیل کلینیک</label>
+                                <input type="email" id="footerEmail" name="footer_email" dir="ltr" value="info@mehrdental.ir" placeholder="info@example.com" />
+                            </div>
+
+                            <!-- کد پستی یا موقعیت -->
+                            <div class="edit-patient-field">
+                                <label for="footerPostalCode">کد پستی (اختیاری)</label>
+                                <input type="text" id="footerPostalCode" name="footer_postal_code" dir="ltr" value="14155-6351" placeholder="کد پستی ۱۰ رقمی" />
+                            </div>
+
+                            <!-- آدرس -->
+                            <div class="edit-patient-field full">
+                                <label for="footerAddress">آدرس کلینیک در فوتر</label>
+                                <textarea id="footerAddress" name="footer_address" rows="3" placeholder="آدرس دقیق کلینیک را وارد کنید...">تهران، خیابان ولیعصر، بالاتر از میدان ونک، کوچه مهر، پلاک ۱۲، طبقه ۲</textarea>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 4. بخش ساعات کاری و شبکه‌های اجتماعی فوتر -->
+                    <div class="site-mgmt-two-col">
+
+                        <!-- ساعات کاری -->
+                        <section class="site-mgmt-card">
+                            <div class="site-mgmt-card-header">
+                                <div>
+                                    <h4>ساعات کاری در فوتر</h4>
+                                    <span>تنظیم روزها و ساعات فعالیت کلینیک در ستون ساعات کاری فوتر</span>
+                                </div>
+                            </div>
+
+                            <div class="edit-patient-form single-col">
+                                <div class="edit-patient-field">
+                                    <label for="workingHoursSatWed">شنبه تا چهارشنبه</label>
+                                    <input type="text" id="workingHoursSatWed" name="hours_sat_wed" value="۰۹:۰۰ الی ۲۱:۰۰" placeholder="مثلاً ۰۹:۰۰ الی ۲۱:۰۰" />
+                                </div>
+
+                                <div class="edit-patient-field">
+                                    <label for="workingHoursThu">پنج‌شنبه‌ها</label>
+                                    <input type="text" id="workingHoursThu" name="hours_thu" value="۰۹:۰۰ الی ۱۷:۰۰" placeholder="مثلاً ۰۹:۰۰ الی ۱۷:۰۰" />
+                                </div>
+
+                                <div class="edit-patient-field">
+                                    <label for="workingHoursFri">جمعه‌ها و تعطیلات رسمی</label>
+                                    <input type="text" id="workingHoursFri" name="hours_fri" value="تعطیل" placeholder="مثلاً تعطیل" />
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- شبکه‌های اجتماعی -->
+                        <section class="site-mgmt-card">
+                            <div class="site-mgmt-card-header">
+                                <div>
+                                    <h4>شبکه‌های اجتماعی فوتر</h4>
+                                    <span>لینک آیکون‌های شبکه‌های اجتماعی کلینیک در فوتر</span>
+                                </div>
+                            </div>
+
+                            <div class="edit-patient-form single-col">
+                                <div class="edit-patient-field">
+                                    <label for="socialInstagram">لینک اینستاگرام (Instagram)</label>
+                                    <input type="url" id="socialInstagram" name="social_instagram" dir="ltr" value="https://instagram.com/mehrdental" placeholder="https://instagram.com/..." />
+                                </div>
+
+                                <div class="edit-patient-field">
+                                    <label for="socialTelegram">لینک تلگرام (Telegram)</label>
+                                    <input type="url" id="socialTelegram" name="social_telegram" dir="ltr" value="https://t.me/mehrdental" placeholder="https://t.me/..." />
+                                </div>
+
+                                <div class="edit-patient-field">
+                                    <label for="socialWhatsapp">لینک واتساپ (WhatsApp)</label>
+                                    <input type="url" id="socialWhatsapp" name="social_whatsapp" dir="ltr" value="https://wa.me/989123456789" placeholder="https://wa.me/..." />
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- 5. بخش لینک‌های ستون‌های فوتر (دسترسی سریع و خدمات) -->
+                    <section class="site-mgmt-card">
+                        <div class="site-mgmt-card-header">
+                            <div>
+                                <h4>عناوین و لینک‌های پایین فوتر</h4>
+                                <span>مدیریت عناوین ستون‌های فوتر و لینک‌های قوانین در نوار پایینی فوتر</span>
+                            </div>
+                        </div>
+
+                        <div class="edit-patient-form">
+                            <div class="edit-patient-field">
+                                <label for="footerCol1Title">عنوان ستون لینک‌های اول (مثلاً دسترسی سریع)</label>
+                                <input type="text" id="footerCol1Title" name="footer_col1_title" value="دسترسی سریع" />
+                            </div>
+
+                            <div class="edit-patient-field">
+                                <label for="footerCol2Title">عنوان ستون لینک‌های دوم (مثلاً خدمات ما)</label>
+                                <input type="text" id="footerCol2Title" name="footer_col2_title" value="خدمات کلینیک" />
+                            </div>
+
+                            <div class="edit-patient-field">
+                                <label for="footerBottomLink1Text">عنوان لینک اول نوار پایین فوتر</label>
+                                <input type="text" id="footerBottomLink1Text" name="footer_bottom_link1_text" value="قوانین و مقررات" />
+                            </div>
+
+                            <div class="edit-patient-field">
+                                <label for="footerBottomLink2Text">عنوان لینک دوم نوار پایین فوتر</label>
+                                <input type="text" id="footerBottomLink2Text" name="footer_bottom_link2_text" value="حریم خصوصی" />
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- دکمه‌های ثبت نهایی فرم -->
+                    <div class="site-mgmt-actions">
+                        <button type="reset" class="edit-patient-cancel" id="resetSiteSettingsBtn">
+                            انصراف و بازنشانی
+                        </button>
+                        <button type="submit" class="edit-patient-save" id="submitSiteSettingsBtn">
+                            ذخیره تغییرات سایت
+                        </button>
+                    </div>
+
+                </form>
+
+            </article>
+        </div>
+    </div>
+
+    <script src="./JS/dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1363 @@
+<!doctype html>
+<html lang="fa">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Clinic Management || Admin Pannel</title>
+
+    <link rel="stylesheet" href="./Styles/main.css" />
+
+    <link rel="shortcut icon" href="img/Mehr-Icon.png" type="image/x-icon" />
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.15.12/dist/cdn.min.js"></script>
+</head>
+
+<body>
+    <div x-data="{
+    isOpen: false,
+    newAppointment: false,
+    showAppointmentDetails: false,
+    editingAppointment: false,
+    showPatientActions: false,
+    editingPatient: false
+  }">
+        <nav class="panel-nav-container">
+            <div class="panel-user-avatar-container">
+                <div class="panel-user-avatar-info">
+                    <div class="panel-user-info">
+                        <span class="panel-user-name">علیرضا درخشانفرد</span>
+                        <span class="panel-user-role">مدیر کلینیک</span>
+                    </div>
+                    <div class="panel-user-avatar">
+                        <img class="panel-user-avatar-img" src="./img/Face-Avatar/Avatar1.jpg" alt="نام شخض" />
+                    </div>
+                </div>
+
+                <div class="panel-nav-notif-container">
+                    <span class="panel-nav-notif-text">1</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_4418_9854)">
+                            <path
+                                d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z"
+                                stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z"
+                                stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z"
+                                stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M15 11H9" stroke="#374151" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_4418_9854">
+                                <rect width="24" height="24" fill="none" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <div class="panel-nav-search-container">
+                <input type="text" class="panel-nav-serach-input" placeholder="جستجو در پنل ..." />
+                <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
+                    fill="none">
+                    <path
+                        d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
+                        stroke="#374151" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M22 22L20 20" stroke="#374151" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </div>
+            <div class="panel-nav-menu-container">
+                <button class="panel-nav-menu-btn" @click="isOpen= true">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_4418_6187)">
+                            <path d="M3 7H21" stroke="#374151" stroke-width="1.5" stroke-linecap="round" />
+                            <path opacity="0.34" d="M3 12H21" stroke="#374151" stroke-width="1.5"
+                                stroke-linecap="round" />
+                            <path d="M3 17H21" stroke="#374151" stroke-width="1.5" stroke-linecap="round" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_4418_6187">
+                                <rect width="24" height="24" fill="none" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div class="panel-content-container">
+            <aside class="panel-aside" x-data="{isActive: 6}" :class="{ 'panel-aside-open': isOpen }">
+                <div class="panel-aside-header">
+                    <button class="panel-aside-close-btn" @click="isOpen = false">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_4418_9821)">
+                                <path
+                                    d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                    stroke="#ef4444" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M9.17004 14.8299L14.83 9.16992" stroke="#ef4444" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M14.83 14.8299L9.17004 9.16992" stroke="#ef4444" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_4418_9821">
+                                    <rect width="24" height="24" fill="none" />
+                                </clipPath>
+                            </defs>
+                        </svg>
+                    </button>
+                    <img src="./img/Mehr-Icon.png" alt="دندان پزشکی مهر" class="panel-aside-icon" />
+                    <h3>کلینیک دندان پزشکی مهر</h3>
+                    <p>لبخندی سالم، زیبا و ماندگار</p>
+                </div>
+                <div class="panel-aside-links-container">
+                    <ul class="panel-aside-list">
+                        <li class="panel-aside-link" @click="isActive = 1; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 1 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9815)">
+                                        <path d="M12 18V15" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M10.07 2.81985L3.14002 8.36985C2.36002 8.98985 1.86002 10.2998 2.03002 11.2798L3.36002 19.2398C3.60002 20.6598 4.96002 21.8098 6.40002 21.8098H17.6C19.03 21.8098 20.4 20.6498 20.64 19.2398L21.97 11.2798C22.13 10.2998 21.63 8.98985 20.86 8.36985L13.93 2.82985C12.86 1.96985 11.13 1.96985 10.07 2.81985Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9815">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">داشبورد</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 2; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 2 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9971)">
+                                        <path d="M8 2V5" stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16 2V5" stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3.5 9.08984H20.5" stroke="#ffffff" stroke-width="1.5"
+                                            stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M21 8.5V17C21 20 19.5 22 16 22H8C4.5 22 3 20 3 17V8.5C3 5.5 4.5 3.5 8 3.5H16C19.5 3.5 21 5.5 21 8.5Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.6947 13.6992H15.7037" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.6947 16.6992H15.7037" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.9955 13.6992H12.0045" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.9955 16.6992H12.0045" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.29431 13.6992H8.30329" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M8.29431 16.6992H8.30329" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9971">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">نوبت‌ها</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 3; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 3 }">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_3111_32754)">
+                                        <path
+                                            d="M9.16006 10.87C9.06006 10.86 8.94006 10.86 8.83006 10.87C6.45006 10.79 4.56006 8.84 4.56006 6.44C4.56006 3.99 6.54006 2 9.00006 2C11.4501 2 13.4401 3.99 13.4401 6.44C13.4301 8.84 11.5401 10.79 9.16006 10.87Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M16.4098 4C18.3498 4 19.9098 5.57 19.9098 7.5C19.9098 9.39 18.4098 10.93 16.5398 11C16.4598 10.99 16.3698 10.99 16.2798 11"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M4.16021 14.56C1.74021 16.18 1.74021 18.82 4.16021 20.43C6.91021 22.27 11.4202 22.27 14.1702 20.43C16.5902 18.81 16.5902 16.17 14.1702 14.56C11.4302 12.73 6.92021 12.73 4.16021 14.56Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_3111_32754">
+                                            <rect width="24" height="24" fill="none" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">بیماران</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 4; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 4 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_3111_32742)">
+                                        <path
+                                            d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M3.41016 22C3.41016 18.13 7.26015 15 12.0002 15C12.9602 15 13.8902 15.13 14.7602 15.37"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M22 18C22 18.75 21.79 19.46 21.42 20.06C21.21 20.42 20.94 20.74 20.63 21C19.93 21.63 19.01 22 18 22C16.54 22 15.27 21.22 14.58 20.06C14.21 19.46 14 18.75 14 18C14 16.74 14.58 15.61 15.5 14.88C16.19 14.33 17.06 14 18 14C20.21 14 22 15.79 22 18Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M16.4399 17.9995L17.4299 18.9895L19.5599 17.0195" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_3111_32742">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">پزشکان</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 5; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 5 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9854)">
+                                        <path
+                                            d="M18.97 22H4.96997C1.96997 22 1.96997 20.65 1.96997 19V18C1.96997 17.45 2.41997 17 2.96997 17H20.97C21.52 17 21.97 17.45 21.97 18V19C21.97 20.65 21.97 22 18.97 22Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M20.72 13V17H3.27002V13C3.27002 9.16 5.98002 5.95 9.59002 5.18C10.13 5.06 10.69 5 11.27 5H12.72C13.3 5 13.87 5.06 14.41 5.18C18.02 5.96 20.72 9.16 20.72 13Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M14.5 4.5C14.5 4.74 14.47 4.96 14.41 5.18C13.87 5.06 13.3 5 12.72 5H11.27C10.69 5 10.13 5.06 9.59 5.18C9.53 4.96 9.5 4.74 9.5 4.5C9.5 3.12 10.62 2 12 2C13.38 2 14.5 3.12 14.5 4.5Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 11H9" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9854">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">خدمات</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 6; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 6 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9254)">
+                                        <path
+                                            d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M9 10C10.1046 10 11 9.10457 11 8C11 6.89543 10.1046 6 9 6C7.89543 6 7 6.89543 7 8C7 9.10457 7.89543 10 9 10Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M2.67004 18.9496L7.60004 15.6396C8.39004 15.1096 9.53004 15.1696 10.24 15.7796L10.57 16.0696C11.35 16.7396 12.61 16.7396 13.39 16.0696L17.55 12.4996C18.33 11.8296 19.59 11.8296 20.37 12.4996L22 13.8996"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9254">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">نمونه کارها</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 7; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 7 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9900)">
+                                        <path
+                                            d="M13.73 3.51063L15.49 7.03063C15.73 7.52063 16.37 7.99063 16.91 8.08063L20.1 8.61062C22.14 8.95062 22.62 10.4306 21.15 11.8906L18.67 14.3706C18.25 14.7906 18.02 15.6006 18.15 16.1806L18.86 19.2506C19.42 21.6806 18.13 22.6206 15.98 21.3506L12.99 19.5806C12.45 19.2606 11.56 19.2606 11.01 19.5806L8.02003 21.3506C5.88003 22.6206 4.58003 21.6706 5.14003 19.2506L5.85003 16.1806C5.98003 15.6006 5.75003 14.7906 5.33003 14.3706L2.85003 11.8906C1.39003 10.4306 1.86003 8.95062 3.90003 8.61062L7.09003 8.08063C7.62003 7.99063 8.26003 7.52063 8.50003 7.03063L10.26 3.51063C11.22 1.60063 12.78 1.60063 13.73 3.51063Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9900">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">نظرات بیماران</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 8; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 8 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9426)">
+                                        <path
+                                            d="M8.5 19H8C4 19 2 18 2 13V8C2 4 4 2 8 2H16C20 2 22 4 22 8V13C22 17 20 19 16 19H15.5C15.19 19 14.89 19.15 14.7 19.4L13.2 21.4C12.54 22.28 11.46 22.28 10.8 21.4L9.3 19.4C9.14 19.18 8.77 19 8.5 19Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M15.9965 11H16.0054" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M11.9955 11H12.0045" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M7.99451 11H8.00349" stroke="#ffffff" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9426">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">پیام‌ها و تماس‌ها</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 9; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 9 }">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_3111_32754)">
+                                        <path
+                                            d="M9.16006 10.87C9.06006 10.86 8.94006 10.86 8.83006 10.87C6.45006 10.79 4.56006 8.84 4.56006 6.44C4.56006 3.99 6.54006 2 9.00006 2C11.4501 2 13.4401 3.99 13.4401 6.44C13.4301 8.84 11.5401 10.79 9.16006 10.87Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M16.4098 4C18.3498 4 19.9098 5.57 19.9098 7.5C19.9098 9.39 18.4098 10.93 16.5398 11C16.4598 10.99 16.3698 10.99 16.2798 11"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M4.16021 14.56C1.74021 16.18 1.74021 18.82 4.16021 20.43C6.91021 22.27 11.4202 22.27 14.1702 20.43C16.5902 18.81 16.5902 16.17 14.1702 14.56C11.4302 12.73 6.92021 12.73 4.16021 14.56Z"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M18.3398 20C19.0598 19.85 19.7398 19.56 20.2998 19.13C21.8598 17.96 21.8598 16.03 20.2998 14.86C19.7498 14.44 19.0798 14.16 18.3698 14"
+                                            stroke="#fff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_3111_32754">
+                                            <rect width="24" height="24" fill="none" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">کاربران</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 10; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 10 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9440)">
+                                        <path d="M22 12C22 6.48 17.52 2 12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M7.99998 3H8.99998C7.04998 8.84 7.04998 15.16 8.99998 21H7.99998"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path d="M15 3C15.97 5.92 16.46 8.96 16.46 12" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3 16V15C5.92 15.97 8.96 16.46 12 16.46" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M3 8.99961C8.84 7.04961 15.16 7.04961 21 8.99961" stroke="#ffffff"
+                                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M19.21 15.741L15.67 19.281C15.53 19.421 15.4 19.681 15.37 19.871L15.18 21.221C15.11 21.711 15.45 22.051 15.94 21.981L17.29 21.791C17.48 21.761 17.75 21.631 17.88 21.491L21.42 17.951C22.03 17.341 22.32 16.631 21.42 15.731C20.53 14.841 19.82 15.131 19.21 15.741Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path d="M18.7001 16.25C19.0001 17.33 19.8401 18.17 20.9201 18.47"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9440">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">مدیریت سایت</span>
+                            </a>
+                        </li>
+                        <li class="panel-aside-link" @click="isActive = 11; isOpen = false">
+                            <a href="#" class="panel-aside-item" :class="{ 'panel-aside-item-active': isActive == 11 }">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none">
+                                    <g clip-path="url(#clip0_4418_9935)">
+                                        <path
+                                            d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                        <path
+                                            d="M2 12.8794V11.1194C2 10.0794 2.85 9.21945 3.9 9.21945C5.71 9.21945 6.45 7.93945 5.54 6.36945C5.02 5.46945 5.33 4.29945 6.24 3.77945L7.97 2.78945C8.76 2.31945 9.78 2.59945 10.25 3.38945L10.36 3.57945C11.26 5.14945 12.74 5.14945 13.65 3.57945L13.76 3.38945C14.23 2.59945 15.25 2.31945 16.04 2.78945L17.77 3.77945C18.68 4.29945 18.99 5.46945 18.47 6.36945C17.56 7.93945 18.3 9.21945 20.11 9.21945C21.15 9.21945 22.01 10.0694 22.01 11.1194V12.8794C22.01 13.9194 21.16 14.7794 20.11 14.7794C18.3 14.7794 17.56 16.0594 18.47 17.6294C18.99 18.5394 18.68 19.6994 17.77 20.2194L16.04 21.2094C15.25 21.6794 14.23 21.3994 13.76 20.6094L13.65 20.4194C12.75 18.8494 11.27 18.8494 10.36 20.4194L10.25 20.6094C9.78 21.3994 8.76 21.6794 7.97 21.2094L6.24 20.2194C5.33 19.6994 5.02 18.5294 5.54 17.6294C6.45 16.0594 5.71 14.7794 3.9 14.7794C2.85 14.7794 2 13.9194 2 12.8794Z"
+                                            stroke="#ffffff" stroke-width="1.5" stroke-miterlimit="10"
+                                            stroke-linecap="round" stroke-linejoin="round" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_4418_9935">
+                                            <rect width="24" height="24" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                                <span class="panel-aside-text">تنظیمات</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </aside>
+            <article class="dashboard-container">
+                <div class="dashboard-title dashboard-title-flex">
+                    <div class="dashboard-text-container">
+                        <h3>نمونه کارها</h3>
+                        <p>مدیریت و نمایش نمونه کارهای کلینیک</p>
+                        <p id="dashboardCurrentDate"></p>
+                    </div>
+                    <button class="action-btn" @click="newAppointment = !newAppointment">
+                        + افزودن نمونه کار
+                    </button>
+                </div>
+
+                <div class="new-appointment-overlay" x-show="newAppointment" x-transition>
+                    <div class="new-appointment" x-cloak>
+
+                        <!-- Header -->
+                        <div class="new-appointment-header">
+                            <div>
+                                <h3>افزودن نمونه کار جدید</h3>
+                                <span>اطلاعات نمونه کار را وارد کنید</span>
+                            </div>
+
+                            <button class="new-appointment-close" @click="newAppointment = false" type="button">
+                                ×
+                            </button>
+                        </div>
+
+                        <!-- Main Image -->
+                        <div class="appointment-field">
+                            <label for="portfolioImage">تصویر اصلی نمونه کار</label>
+
+                            <div class="appointment-input">
+                                <input type="file" id="portfolioImage" name="image" accept="image/*" />
+                            </div>
+                        </div>
+
+                        <!-- Portfolio Title -->
+                        <div class="appointment-field">
+                            <label for="portfolioTitle">عنوان نمونه کار</label>
+
+                            <div class="appointment-input">
+                                <input type="text" id="portfolioTitle" name="title" placeholder="مثلاً اصلاح طرح لبخند"
+                                    required />
+                            </div>
+                        </div>
+
+                        <!-- Treatment Category -->
+                        <div class="appointment-field">
+                            <label for="portfolioCategory">دسته‌بندی درمان</label>
+
+                            <div class="appointment-input">
+                                <select id="portfolioCategory" name="category" required>
+                                    <option value="">انتخاب دسته‌بندی</option>
+                                    <option value="cosmetic">زیبایی و اصلاح طرح لبخند</option>
+                                    <option value="implant">ایمپلنت دندان</option>
+                                    <option value="orthodontics">ارتودنسی</option>
+                                    <option value="restoration">ترمیم دندان</option>
+                                    <option value="whitening">سفید کردن دندان</option>
+                                    <option value="root-canal">درمان ریشه</option>
+                                    <option value="surgery">جراحی دهان و دندان</option>
+                                    <option value="other">سایر درمان‌ها</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Doctor -->
+                        <div class="appointment-field">
+                            <label for="portfolioDoctor">پزشک انجام‌دهنده درمان</label>
+
+                            <div class="appointment-input">
+                                <select id="portfolioDoctor" name="doctor_id">
+                                    <option value="">انتخاب پزشک</option>
+                                    <option value="1">دکتر محمد احمدی</option>
+                                    <option value="2">دکتر سارا رضایی</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Before Image -->
+                        <div class="appointment-field">
+                            <label for="portfolioBefore">تصویر قبل از درمان</label>
+
+                            <div class="appointment-input">
+                                <input type="file" id="portfolioBefore" name="before_image" accept="image/*" />
+                            </div>
+                        </div>
+
+                        <!-- After Image -->
+                        <div class="appointment-field">
+                            <label for="portfolioAfter">تصویر بعد از درمان</label>
+
+                            <div class="appointment-input">
+                                <input type="file" id="portfolioAfter" name="after_image" accept="image/*" />
+                            </div>
+                        </div>
+
+                        <!-- Treatment Date -->
+                        <div class="appointment-field">
+                            <label for="portfolioDate">تاریخ انجام درمان</label>
+
+                            <div class="appointment-input">
+                                <input type="date" id="portfolioDate" name="treatment_date" />
+                            </div>
+                        </div>
+
+                        <!-- Publish Status -->
+                        <div class="appointment-field">
+                            <label for="portfolioStatus">وضعیت انتشار در سایت</label>
+
+                            <div class="appointment-input">
+                                <select id="portfolioStatus" name="status" required>
+                                    <option value="published">منتشر شده</option>
+                                    <option value="draft">پیش‌نویس</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="appointment-field appointment-notes">
+                            <label for="portfolioDescription">توضیحات نمونه کار</label>
+
+                            <div class="appointment-textarea">
+                                <textarea id="portfolioDescription" name="description"
+                                    placeholder="شرح درمان، روش انجام کار و نتیجه نهایی را وارد کنید..."
+                                    rows="4"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="appointment-actions">
+                            <button class="appointment-cancel" type="button" @click="newAppointment = false">
+                                انصراف
+                            </button>
+
+                            <button class="appointment-submit" type="button">
+                                ثبت نمونه کار
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="dashboard-paitent-status">
+                    <article class="dashboard-paitent-status-card">
+                        <div class="dashboard-paitent-icon dashboard-doctors">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_655_7264)">
+                                    <path d="M2 12H3.54" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M20.54 12H22" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M4.92969 19.07L6.01969 17.98" stroke="#8B5CF6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M18.04 5.95999L19.07 4.92999" stroke="#8B5CF6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M12 22V20.46" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M12 3.46V2" stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M19.0705 19.07L17.9805 17.98" stroke="#8B5CF6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M5.95969 5.95999L4.92969 4.92999" stroke="#8B5CF6" stroke-width="1.5"
+                                        stroke-linecap="round" stroke-linejoin="round" />
+                                    <path
+                                        d="M12.2797 7.53997L13.3597 10.46C13.3897 10.54 13.4597 10.61 13.5397 10.64L16.4597 11.72C16.7197 11.82 16.7197 12.19 16.4597 12.28L13.5397 13.36C13.4597 13.39 13.3897 13.46 13.3597 13.54L12.2797 16.46C12.1797 16.72 11.8097 16.72 11.7197 16.46L10.6397 13.54C10.6097 13.46 10.5397 13.39 10.4597 13.36L7.53973 12.28C7.27973 12.18 7.27973 11.81 7.53973 11.72L10.4597 10.64C10.5397 10.61 10.6097 10.54 10.6397 10.46L11.7197 7.53997C11.8197 7.27997 12.1897 7.27997 12.2797 7.53997Z"
+                                        stroke="#8B5CF6" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_655_7264">
+                                        <rect width="24" height="24" fill="none" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="dashboard-paitent-info">
+                            <h4 style="color: #8b5cf6">نمونه کار های امروز</h4>
+                            <p>2</p>
+                            <span>
+                                <span class="dashboard-increase">5%+</span> نسبت به ماه قبل
+                            </span>
+                        </div>
+                    </article>
+                    <article class="dashboard-paitent-status-card">
+                        <div class="dashboard-paitent-icon dashboard-pending">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <g clip-path="url(#clip0_4418_9979)">
+                                    <path
+                                        d="M15.24 2H8.76004C5.00004 2 4.71004 5.38 6.74004 7.22L17.26 16.78C19.29 18.62 19 22 15.24 22H8.76004C5.00004 22 4.71004 18.62 6.74004 16.78L17.26 7.22C19.29 5.38 19 2 15.24 2Z"
+                                        stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_4418_9979">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="dashboard-paitent-info">
+                            <h4 style="color: #f59e0b">در انتظار بررسی</h4>
+                            <p>8</p>
+                            <span>
+                                <span class="dashboard-increase">0%+</span> نسبت به ماه قبل
+                            </span>
+                        </div>
+                    </article>
+                    <article class="dashboard-paitent-status-card">
+                        <div class="dashboard-paitent-icon dashboard-paitent">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none">
+                                <g clip-path="url(#clip0_4418_9818)">
+                                    <path
+                                        d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
+                                        stroke="#10b981" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M7.75 11.9999L10.58 14.8299L16.25 9.16992" stroke="#10b981"
+                                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_4418_9818">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="dashboard-paitent-info">
+                            <h4 style="color: #10b981">نمونه کار فعال</h4>
+                            <p>25</p>
+                            <span>
+                                <span class="dashboard-increase">14%+</span> نسبت به ماه قبل
+                            </span>
+                        </div>
+                    </article>
+                    <article class="dashboard-paitent-status-card">
+                        <div class="dashboard-paitent-icon dashboard-reserved">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="#0EA5FF"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_4418_7535)">
+                                    <path
+                                        d="M8 5.75C7.59 5.75 7.25 5.41 7.25 5V2C7.25 1.59 7.59 1.25 8 1.25C8.41 1.25 8.75 1.59 8.75 2V5C8.75 5.41 8.41 5.75 8 5.75Z" />
+                                    <path
+                                        d="M16 5.75C15.59 5.75 15.25 5.41 15.25 5V2C15.25 1.59 15.59 1.25 16 1.25C16.41 1.25 16.75 1.59 16.75 2V5C16.75 5.41 16.41 5.75 16 5.75Z" />
+                                    <path
+                                        d="M8.5 14.5003C8.37 14.5003 8.24 14.4703 8.12 14.4203C7.99 14.3703 7.89 14.3003 7.79 14.2103C7.61 14.0203 7.5 13.7703 7.5 13.5003C7.5 13.3703 7.53 13.2403 7.58 13.1203C7.63 13.0003 7.7 12.8903 7.79 12.7903C7.89 12.7003 7.99 12.6303 8.12 12.5803C8.48 12.4303 8.93 12.5103 9.21 12.7903C9.39 12.9803 9.5 13.2403 9.5 13.5003C9.5 13.5603 9.49 13.6303 9.48 13.7003C9.47 13.7603 9.45 13.8203 9.42 13.8803C9.4 13.9403 9.37 14.0003 9.33 14.0603C9.3 14.1103 9.25 14.1603 9.21 14.2103C9.02 14.3903 8.76 14.5003 8.5 14.5003Z" />
+                                    <path
+                                        d="M12 14.5008C11.87 14.5008 11.74 14.4709 11.62 14.4209C11.49 14.3709 11.39 14.3008 11.29 14.2108C11.11 14.0208 11 13.7708 11 13.5008C11 13.3708 11.03 13.2408 11.08 13.1208C11.13 13.0008 11.2 12.8909 11.29 12.7909C11.39 12.7009 11.49 12.6308 11.62 12.5808C11.98 12.4208 12.43 12.5109 12.71 12.7909C12.89 12.9809 13 13.2408 13 13.5008C13 13.5608 12.99 13.6309 12.98 13.7009C12.97 13.7609 12.95 13.8209 12.92 13.8809C12.9 13.9409 12.87 14.0008 12.83 14.0608C12.8 14.1108 12.75 14.1608 12.71 14.2108C12.52 14.3908 12.26 14.5008 12 14.5008Z" />
+                                    <path
+                                        d="M15.5 14.5008C15.37 14.5008 15.24 14.4709 15.12 14.4209C14.99 14.3709 14.89 14.3008 14.79 14.2108C14.75 14.1608 14.71 14.1108 14.67 14.0608C14.63 14.0008 14.6 13.9409 14.58 13.8809C14.55 13.8209 14.53 13.7609 14.52 13.7009C14.51 13.6309 14.5 13.5608 14.5 13.5008C14.5 13.2408 14.61 12.9809 14.79 12.7909C14.89 12.7009 14.99 12.6308 15.12 12.5808C15.49 12.4208 15.93 12.5109 16.21 12.7909C16.39 12.9809 16.5 13.2408 16.5 13.5008C16.5 13.5608 16.49 13.6309 16.48 13.7009C16.47 13.7609 16.45 13.8209 16.42 13.8809C16.4 13.9409 16.37 14.0008 16.33 14.0608C16.3 14.1108 16.25 14.1608 16.21 14.2108C16.02 14.3908 15.76 14.5008 15.5 14.5008Z" />
+                                    <path
+                                        d="M8.5 17.9992C8.37 17.9992 8.24 17.9692 8.12 17.9192C8 17.8692 7.89 17.7992 7.79 17.7092C7.61 17.5192 7.5 17.2592 7.5 16.9992C7.5 16.8692 7.53 16.7392 7.58 16.6192C7.63 16.4892 7.7 16.3792 7.79 16.2892C8.16 15.9192 8.84 15.9192 9.21 16.2892C9.39 16.4792 9.5 16.7392 9.5 16.9992C9.5 17.2592 9.39 17.5192 9.21 17.7092C9.02 17.8892 8.76 17.9992 8.5 17.9992Z" />
+                                    <path
+                                        d="M12 17.9992C11.74 17.9992 11.48 17.8892 11.29 17.7092C11.11 17.5192 11 17.2592 11 16.9992C11 16.8692 11.03 16.7392 11.08 16.6192C11.13 16.4892 11.2 16.3792 11.29 16.2892C11.66 15.9192 12.34 15.9192 12.71 16.2892C12.8 16.3792 12.87 16.4892 12.92 16.6192C12.97 16.7392 13 16.8692 13 16.9992C13 17.2592 12.89 17.5192 12.71 17.7092C12.52 17.8892 12.26 17.9992 12 17.9992Z" />
+                                    <path
+                                        d="M15.5 18.0009C15.24 18.0009 14.98 17.8909 14.79 17.7109C14.7 17.6209 14.63 17.5109 14.58 17.3809C14.53 17.2609 14.5 17.1309 14.5 17.0009C14.5 16.8709 14.53 16.7409 14.58 16.6209C14.63 16.4909 14.7 16.3809 14.79 16.2909C15.02 16.0609 15.37 15.9509 15.69 16.0209C15.76 16.0309 15.82 16.0509 15.88 16.0809C15.94 16.1009 16 16.1309 16.06 16.1709C16.11 16.2009 16.16 16.2509 16.21 16.2909C16.39 16.4809 16.5 16.7409 16.5 17.0009C16.5 17.2609 16.39 17.5209 16.21 17.7109C16.02 17.8909 15.76 18.0009 15.5 18.0009Z" />
+                                    <path
+                                        d="M20.5 9.83984H3.5C3.09 9.83984 2.75 9.49984 2.75 9.08984C2.75 8.67984 3.09 8.33984 3.5 8.33984H20.5C20.91 8.33984 21.25 8.67984 21.25 9.08984C21.25 9.49984 20.91 9.83984 20.5 9.83984Z" />
+                                    <path
+                                        d="M16 22.75H8C4.35 22.75 2.25 20.65 2.25 17V8.5C2.25 4.85 4.35 2.75 8 2.75H16C19.65 2.75 21.75 4.85 21.75 8.5V17C21.75 20.65 19.65 22.75 16 22.75ZM8 4.25C5.14 4.25 3.75 5.64 3.75 8.5V17C3.75 19.86 5.14 21.25 8 21.25H16C18.86 21.25 20.25 19.86 20.25 17V8.5C20.25 5.64 18.86 4.25 16 4.25H8Z" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_4418_7535">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="dashboard-paitent-info">
+                            <h4 style="color: #0ea5ff">کل نمونه کارها</h4>
+                            <p>32</p>
+                            <span>
+                                <span class="dashboard-increase">0%+</span> نسبت به ماه قبل
+                            </span>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Portfolio Management -->
+
+                <section class="portfolio-section">
+
+                    <!-- Top Toolbar -->
+                    <div class="portfolio-toolbar">
+
+                        <div class="portfolio-search">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8" />
+                                <path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                            </svg>
+
+                            <input type="search" id="portfolioSearch"
+                                placeholder="جستجو بر اساس نام، دسته‌بندی یا توضیحات...">
+                        </div>
+
+                        <div class="portfolio-filters">
+
+                            <select id="portfolioCategoryFilter">
+                                <option value="all">همه دسته‌بندی‌ها</option>
+                                <option value="implant">ایمپلنت</option>
+                                <option value="orthodontics">ارتودنسی</option>
+                                <option value="cosmetic">زیبایی</option>
+                                <option value="restoration">ترمیم</option>
+                                <option value="cleaning">جرم‌گیری</option>
+                                <option value="surgery">جراحی</option>
+                            </select>
+
+                            <select id="portfolioDoctorFilter">
+                                <option value="all">همه پزشکان</option>
+                                <option value="1">دکتر محمد احمدی</option>
+                                <option value="2">دکتر سارا رضایی</option>
+                            </select>
+
+                            <select id="portfolioStatusFilter">
+                                <option value="all">همه وضعیت‌ها</option>
+                                <option value="published">منتشر شده</option>
+                                <option value="draft">پیش‌نویس</option>
+                            </select>
+
+                            <button type="button" class="portfolio-add-btn" id="addPortfolioBtn">
+                                <span>+</span>
+                                افزودن نمونه کار
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <!-- Category Chips -->
+                    <div class="portfolio-categories">
+
+                        <button type="button" class="active" data-category="all">
+                            همه
+                        </button>
+
+                        <button type="button" data-category="implant">
+                            ایمپلنت
+                        </button>
+
+                        <button type="button" data-category="orthodontics">
+                            ارتودنسی
+                        </button>
+
+                        <button type="button" data-category="cosmetic">
+                            زیبایی
+                        </button>
+
+                        <button type="button" data-category="restoration">
+                            ترمیم
+                        </button>
+
+                        <button type="button" data-category="cleaning">
+                            جرم‌گیری
+                        </button>
+
+                        <button type="button" data-category="surgery">
+                            جراحی لثه
+                        </button>
+
+                    </div>
+
+                    <!-- Portfolio Grid -->
+                    <div class="portfolio-grid" id="portfolioGrid">
+
+                        <!-- Portfolio 1 -->
+                        <article class="portfolio-card" data-id="1" data-title="ایمپلنت دندان" data-category="implant"
+                            data-doctor="1" data-status="published">
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/implant.jpg" alt="نمونه کار ایمپلنت دندان"
+                                    class="portfolio-image" loading="lazy">
+                                <span class="portfolio-image-category">ایمپلنت</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>ایمپلنت دندان</h3>
+                                    <span class="portfolio-status status-published">
+                                        منتشر شده
+                                    </span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر محمد احمدی</span>
+                                    <span>۱۴۰۵/۰۶/۱۸</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="1"
+                                        title="مشاهده">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M2.5 12s3.4-6 9.5-6 9.5 6 9.5 6-3.4 6-9.5 6-9.5-6-9.5-6Z"
+                                                stroke="currentColor" stroke-width="1.7" />
+                                            <circle cx="12" cy="12" r="2.7" stroke="currentColor" stroke-width="1.7" />
+                                        </svg>
+                                    </button>
+
+                                    <button type="button" class="portfolio-icon-btn" @click="showPatientActions = true"
+                                        data-action="edit" data-id="1" title="ویرایش">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="m14 6 4 4M4 20l4.2-.9L19 8.3a2.1 2.1 0 0 0-3-3L5.2 16.1 4 20Z"
+                                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="1" title="حذف">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M4 7h16M10 11v6M14 11v6M5.5 7l1 13h11l1-13M9 7V4h6v3"
+                                                stroke="currentColor" stroke-width="1.7" stroke-linecap="round"
+                                                stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 2 -->
+                        <article class="portfolio-card" data-id="2" data-title="ارتودنسی ثابت"
+                            data-category="orthodontics" data-doctor="2" data-status="published">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/orthodontics.jpg" alt="نمونه کار ارتودنسی"
+                                    class="portfolio-image" loading="lazy">
+                                <span class="portfolio-image-category">ارتودنسی</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>ارتودنسی ثابت</h3>
+                                    <span class="portfolio-status status-published">منتشر شده</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر سارا رضایی</span>
+                                    <span>۱۴۰۵/۰۶/۱۵</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="2"
+                                        title="مشاهده">
+                                        <span aria-hidden="true">⌕</span>
+                                    </button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="2"
+                                        title="ویرایش">
+                                        <span aria-hidden="true">✎</span>
+                                    </button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="2" title="حذف">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 3 -->
+                        <article class="portfolio-card" data-id="3" data-title="کامپوزیت ونیر" data-category="cosmetic"
+                            data-doctor="1" data-status="published">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/composite.jpg" alt="نمونه کار کامپوزیت ونیر"
+                                    class="portfolio-image" loading="lazy">
+                                <span class="portfolio-image-category">زیبایی</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>کامپوزیت ونیر</h3>
+                                    <span class="portfolio-status status-published">منتشر شده</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر محمد احمدی</span>
+                                    <span>۱۴۰۵/۰۶/۲۰</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="3"
+                                        title="مشاهده">⌕</button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="3"
+                                        title="ویرایش">✎</button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="3" title="حذف">×</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 4 -->
+                        <article class="portfolio-card" data-id="4" data-title="جرم‌گیری و بروساژ"
+                            data-category="cleaning" data-doctor="2" data-status="published">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/cleaning.jpg" alt="نمونه کار جرم‌گیری" class="portfolio-image"
+                                    loading="lazy">
+                                <span class="portfolio-image-category">جرم‌گیری</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>جرم‌گیری و بروساژ</h3>
+                                    <span class="portfolio-status status-published">منتشر شده</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر سارا رضایی</span>
+                                    <span>۱۴۰۵/۰۶/۱۲</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="4"
+                                        title="مشاهده">⌕</button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="4"
+                                        title="ویرایش">✎</button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="4" title="حذف">×</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 5 -->
+                        <article class="portfolio-card" data-id="5" data-title="ترمیم دندان" data-category="restoration"
+                            data-doctor="1" data-status="published">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/restoration.jpg" alt="نمونه کار ترمیم دندان"
+                                    class="portfolio-image" loading="lazy">
+                                <span class="portfolio-image-category">ترمیم</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>ترمیم دندان</h3>
+                                    <span class="portfolio-status status-published">منتشر شده</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر محمد احمدی</span>
+                                    <span>۱۴۰۵/۰۵/۳۰</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="5"
+                                        title="مشاهده">⌕</button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="5"
+                                        title="ویرایش">✎</button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="5" title="حذف">×</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 6 -->
+                        <article class="portfolio-card" data-id="6" data-title="جراحی دندان عقل" data-category="surgery"
+                            data-doctor="2" data-status="published">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/surgery.jpg" alt="نمونه کار جراحی دندان" class="portfolio-image"
+                                    loading="lazy">
+                                <span class="portfolio-image-category">جراحی</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>جراحی دندان عقل</h3>
+                                    <span class="portfolio-status status-published">منتشر شده</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر سارا رضایی</span>
+                                    <span>۱۴۰۵/۰۵/۲۸</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="6"
+                                        title="مشاهده">⌕</button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="6"
+                                        title="ویرایش" @click="showPatientActions = true">✎</button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="6" title="حذف">×</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 7 -->
+                        <article class="portfolio-card" data-id="7" data-title="اصلاح طرح لبخند"
+                            data-category="cosmetic" data-doctor="1" data-status="draft">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/smile-design.jpg" alt="نمونه کار اصلاح طرح لبخند"
+                                    class="portfolio-image" loading="lazy">
+                                <span class="portfolio-image-category">زیبایی</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>اصلاح طرح لبخند</h3>
+                                    <span class="portfolio-status status-draft">پیش‌نویس</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر محمد احمدی</span>
+                                    <span>۱۴۰۵/۰۵/۲۲</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="7"
+                                        title="مشاهده">⌕</button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="7"
+                                        title="ویرایش" @click="showPatientActions = true">✎</button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="7" title="حذف">×</button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Portfolio 8 -->
+                        <article class="portfolio-card" data-id="8" data-title="ایمپلنت و روکش" data-category="implant"
+                            data-doctor="2" data-status="published">
+
+                            <div class="portfolio-image-wrap">
+                                <img src="img/portfolio/implant-crown.jpg" alt="نمونه کار ایمپلنت و روکش"
+                                    class="portfolio-image" loading="lazy">
+                                <span class="portfolio-image-category">ایمپلنت</span>
+                            </div>
+
+                            <div class="portfolio-card-content">
+                                <div class="portfolio-card-heading">
+                                    <h3>ایمپلنت و روکش</h3>
+                                    <span class="portfolio-status status-published">منتشر شده</span>
+                                </div>
+
+                                <div class="portfolio-card-meta">
+                                    <span>دکتر سارا رضایی</span>
+                                    <span>۱۴۰۵/۰۵/۱۵</span>
+                                </div>
+
+                                <div class="portfolio-card-actions">
+                                    <button type="button" class="portfolio-icon-btn" data-action="view" data-id="8"
+                                        title="مشاهده">⌕</button>
+                                    <button type="button" class="portfolio-icon-btn" data-action="edit" data-id="8"
+                                        title="ویرایش" @click="showPatientActions = true">✎</button>
+                                    <button type="button" class="portfolio-icon-btn portfolio-delete-btn"
+                                        data-action="delete" data-id="8" title="حذف">×</button>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="portfolio-empty" id="portfolioEmpty" hidden>
+                        <span>نمونه کاری پیدا نشد.</span>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="portfolio-pagination">
+
+                        <span class="portfolio-pagination-info">
+                            تعداد نمونه‌کارها:
+                            <strong id="portfolioTotal">۸</strong>
+                        </span>
+
+                        <div class="portfolio-pagination-buttons">
+                            <button type="button" aria-label="صفحه قبل" disabled>‹</button>
+                            <button type="button" class="active" aria-current="page">۱</button>
+                            <button type="button" aria-label="صفحه بعد" disabled>›</button>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+
+                <div class="patient-actions-overlay" x-show="showPatientActions" x-transition
+                    @click.self="showPatientActions = false" x-cloak>
+                    <div class="patient-actions-modal">
+
+                        <!-- Header -->
+                        <div class="patient-actions-header">
+                            <div>
+                                <h3>جزئیات نمونه کار</h3>
+                                <span>مشخصات و مدیریت نمونه کار</span>
+                            </div>
+
+                            <button type="button" class="patient-actions-close" @click="showPatientActions = false">
+                                ×
+                            </button>
+                        </div>
+
+                        <!-- Portfolio Info -->
+                        <div class="patient-details">
+
+                            <div class="patient-details-item">
+                                <span>عنوان نمونه کار</span>
+                                <strong>اصلاح طرح لبخند</strong>
+                            </div>
+
+                            <div class="patient-details-item">
+                                <span>دسته‌بندی درمان</span>
+                                <strong>زیبایی و کامپوزیت</strong>
+                            </div>
+
+                            <div class="patient-details-item">
+                                <span>پزشک انجام‌دهنده</span>
+                                <strong>دکتر محمد احمدی</strong>
+                            </div>
+
+                            <div class="patient-details-item">
+                                <span>تاریخ انجام درمان</span>
+                                <strong>۱۴۰۵/۰۶/۲۰</strong>
+                            </div>
+
+                            <div class="patient-details-item">
+                                <span>تاریخ ثبت نمونه کار</span>
+                                <strong>۱۴۰۵/۰۶/۲۲</strong>
+                            </div>
+
+                            <div class="patient-details-item">
+                                <span>وضعیت انتشار</span>
+                                <strong class="portfolio-detail-status">
+                                    منتشر شده
+                                </strong>
+                            </div>
+
+                        </div>
+
+                        <!-- Portfolio Images -->
+                        <div class="patient-description">
+                            <h4>تصاویر نمونه کار</h4>
+
+                            <div class="portfolio-detail-images">
+
+                                <div class="portfolio-detail-image-item">
+                                    <span>قبل از درمان</span>
+
+                                    <img src="img/portfolio/before.jpg" alt="تصویر قبل از درمان" />
+                                </div>
+
+                                <div class="portfolio-detail-image-item">
+                                    <span>بعد از درمان</span>
+
+                                    <img src="img/portfolio/after.jpg" alt="تصویر بعد از درمان" />
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="patient-description">
+                            <h4>توضیحات نمونه کار</h4>
+
+                            <div class="patient-description-content">
+                                <p>
+                                    اصلاح طرح لبخند با استفاده از کامپوزیت دندان و متناسب
+                                    با فرم دندان‌ها و شرایط بیمار انجام شده است.
+                                    نتیجه نهایی با هدف بهبود هماهنگی و زیبایی لبخند بوده است.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Operations -->
+                        <div class="patient-operations">
+
+                            <button type="button" class="patient-operation edit" @click="
+          editingPatient = true;
+          showPatientActions = false;
+        ">
+                                <span>✏️</span>
+                                ویرایش نمونه کار
+                            </button>
+
+                            <button type="button" class="patient-operation delete" @click="
+          if (confirm('آیا از حذف این نمونه کار مطمئن هستید؟')) {
+            showPatientActions = false;
+            $dispatch('delete-portfolio');
+          }
+        ">
+                                <span>🗑️</span>
+                                حذف نمونه کار
+                            </button>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Edit -->
+
+                <div class="edit-patient-overlay" x-show="editingPatient" x-transition
+                    @click.self="editingPatient = false" x-cloak>
+                    <div class="edit-patient-modal">
+
+                        <!-- Header -->
+                        <div class="edit-patient-header">
+                            <div>
+                                <h3>ویرایش نمونه کار</h3>
+                                <span>اطلاعات و تصاویر نمونه کار را ویرایش کنید</span>
+                            </div>
+
+                            <button type="button" class="edit-patient-close" @click="editingPatient = false">
+                                ×
+                            </button>
+                        </div>
+
+                        <!-- Form -->
+                        <div class="edit-patient-form">
+
+                            <!-- Portfolio Title -->
+                            <div class="edit-patient-field">
+                                <label for="portfolio-title">عنوان نمونه کار</label>
+
+                                <input id="portfolio-title" type="text" value="اصلاح طرح لبخند"
+                                    placeholder="عنوان نمونه کار را وارد کنید" />
+                            </div>
+
+                            <!-- Category -->
+                            <div class="edit-patient-field">
+                                <label for="portfolio-category">دسته‌بندی درمان</label>
+
+                                <select id="portfolio-category">
+                                    <option value="implant">ایمپلنت</option>
+                                    <option value="orthodontics">ارتودنسی</option>
+                                    <option value="cosmetic" selected>زیبایی و کامپوزیت</option>
+                                    <option value="restoration">ترمیم دندان</option>
+                                    <option value="cleaning">جرم‌گیری</option>
+                                    <option value="surgery">جراحی دهان و دندان</option>
+                                    <option value="root-canal">درمان ریشه</option>
+                                    <option value="other">سایر درمان‌ها</option>
+                                </select>
+                            </div>
+
+                            <!-- Doctor -->
+                            <div class="edit-patient-field">
+                                <label for="portfolio-doctor">پزشک انجام‌دهنده</label>
+
+                                <select id="portfolio-doctor">
+                                    <option value="">انتخاب پزشک</option>
+                                    <option value="1" selected>دکتر محمد احمدی</option>
+                                    <option value="2">دکتر سارا رضایی</option>
+                                    <option value="3">دکتر علی محمدی</option>
+                                </select>
+                            </div>
+
+                            <!-- Treatment Date -->
+                            <div class="edit-patient-field">
+                                <label for="portfolio-date">تاریخ انجام درمان</label>
+
+                                <input id="portfolio-date" type="text" placeholder="مثلاً ۱۴۰۵/۰۶/۲۰"
+                                    value="۱۴۰۵/۰۶/۲۰" />
+                            </div>
+
+                            <!-- Publish Status -->
+                            <div class="edit-patient-field">
+                                <label for="portfolio-status">وضعیت انتشار</label>
+
+                                <select id="portfolio-status">
+                                    <option value="published" selected>منتشر شده</option>
+                                    <option value="draft">پیش‌نویس</option>
+                                </select>
+                            </div>
+
+                            <!-- Main Image -->
+                            <div class="edit-patient-field full">
+                                <label for="edit-portfolio-image">تصویر اصلی نمونه کار</label>
+
+                                <input id="edit-portfolio-image" type="file" accept="image/*"
+                                    onchange="previewPortfolioImage(event, 'main')" />
+
+                                <div class="portfolio-edit-image-preview">
+                                    <img id="edit-portfolio-main-preview" src="img/portfolio/main.jpg"
+                                        alt="تصویر اصلی نمونه کار" onerror="this.style.display='none'" />
+                                </div>
+                            </div>
+
+                            <!-- Before Image -->
+                            <div class="edit-patient-field full">
+                                <label for="edit-portfolio-before">تصویر قبل از درمان</label>
+
+                                <input id="edit-portfolio-before" type="file" accept="image/*"
+                                    onchange="previewPortfolioImage(event, 'before')" />
+
+                                <div class="portfolio-edit-image-preview">
+                                    <img id="edit-portfolio-before-preview" src="img/portfolio/before.jpg"
+                                        alt="تصویر قبل از درمان" onerror="this.style.display='none'" />
+                                </div>
+                            </div>
+
+                            <!-- After Image -->
+                            <div class="edit-patient-field full">
+                                <label for="edit-portfolio-after">تصویر بعد از درمان</label>
+
+                                <input id="edit-portfolio-after" type="file" accept="image/*"
+                                    onchange="previewPortfolioImage(event, 'after')" />
+
+                                <div class="portfolio-edit-image-preview">
+                                    <img id="edit-portfolio-after-preview" src="img/portfolio/after.jpg"
+                                        alt="تصویر بعد از درمان" onerror="this.style.display='none'" />
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="edit-patient-field full">
+                                <label for="portfolio-description">توضیحات نمونه کار</label>
+
+                                <textarea id="portfolio-description"
+                                    placeholder="شرح درمان و نتیجه نهایی را وارد کنید..."
+                                    rows="4">اصلاح طرح لبخند با استفاده از کامپوزیت دندان و متناسب با شرایط بیمار انجام شده است.</textarea>
+                            </div>
+
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="edit-patient-footer">
+                            <button type="button" class="edit-patient-cancel" @click="editingPatient = false">
+                                انصراف
+                            </button>
+
+                            <button type="button" class="edit-patient-save" @click="editingPatient = false">
+                                ذخیره تغییرات
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+
+        </div>
+</body>
+<script src="./JS/dashboard.js"></script>
+
+
+
+
+</html>
